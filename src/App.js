@@ -2,7 +2,7 @@
 
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-// import SignIn from './Pages/signIn'; 
+import SignIn from './Pages/Auth/signIn'; 
 // import SignUp from './Pages/signUp';
 // import EmailVerification from './Pages/emailVerification';
 // import ForgetPassword from './Pages/forgetPassword';
@@ -14,7 +14,7 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route index element={<Dashboard />} />
+          <Route index element={<SignIn />} />
           {/* <Route path='SignIn' element={<SignIn />} />
           <Route path='SignUp' element={<SignUp/>}/>
           <Route path='EmailVerification' element={<EmailVerification/>}/>
