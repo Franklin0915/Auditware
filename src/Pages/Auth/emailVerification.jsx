@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import './signIn.css';
+import './emailVerification.css';
 import slideImage from './assets/images/slide.png';
 import { useNavigate } from 'react-router-dom'; 
 
@@ -10,7 +10,7 @@ function EmailVerification(){
 
     function handleChange(event) {
         const { name, value, type, checked } = event.target;
-        setLogin((prevForm) => ({
+        setCode((prevForm) => ({
           ...prevForm,
           [name]: type === "checkbox" ? checked : value,
         }));
@@ -25,7 +25,7 @@ function EmailVerification(){
               <p>Email verification</p>
             </div>
             <div className="m-2">
-              <small>enter the verification code sent to you email to continue</small>
+              enter the verification code sent to you email to<br/> continue
             </div>
            
           </div>
@@ -43,9 +43,10 @@ function EmailVerification(){
             </div>
             
             <aside className="login-button">
-              <SubmitButton onClick={toSignUp} >Continue</SubmitButton>
+              <SubmitButton onClick="" >Continue</SubmitButton>
             </aside>
           </form>
+          <div className="v-code">Didn't receive a code?<a href="">Resend in 5:00</a></div>
          </div>
         <div className="right">
           <img src={slideImage}/>
