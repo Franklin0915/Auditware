@@ -6,9 +6,12 @@ import './signIn.css';
 import googleImage from './assets/images/google-image.png';
 import apple from './assets/images/apple.png'
 import slideImage from './assets/images/slide.png';
+import { useNavigate } from 'react-router-dom'; 
+
 
 function SignIn() {
   const [login, setLogin] = React.useState({ email: "", password: "" });
+  const navigate = useNavigate();
 
   function handleChange(event) {
     const { name, value, type, checked } = event.target;
@@ -18,6 +21,9 @@ function SignIn() {
     }));
   }
 
+    function toSignUp(){
+      navigate('/signup');
+    }
   return (
     <div className="mainContainer">
       <div className="left">
@@ -30,14 +36,15 @@ function SignIn() {
             <small>Log in with your email to continue</small>
           </div>
           <div className="auth-buttons">
-          <button className="google-button">
-            <img src={googleImage} alt="Google Image" className="google-icon" />
-            Continue with Google
-          </button>
+            <GoogleButton>
+                 <img src={googleImage} alt="Google Image" className="google-icon" />
+                 Continue with Google
+            </GoogleButton>
 
-            <button className="apple-button">
-              <img src={apple}/> Continue with Apple
-            </button>
+            <AppleButton>
+            <img src={apple}  />
+            Continue with Apple
+             </AppleButton>
           </div>
           <div className="lines">
             <hr />
@@ -70,7 +77,7 @@ function SignIn() {
             <aside className="forgot-password"> <a href="">Forgot password?</a></aside>
           </div>
           <aside className="login-button">
-            <SubmitButton>Log in</SubmitButton>
+            <SubmitButton onClick={toSignUp} >Log in</SubmitButton>
           </aside>
         </form>
         <div className="sign-up">Don't have an account?<a href="">Sign up</a></div>
@@ -92,8 +99,38 @@ export const SubmitButton = styled.button`
    margin:0 0 20px 0;
 `;
 
-const GoogleButton = styled.button`
+export const GoogleButton = styled.button`
+  margin-bottom: 30px;
+  padding: 10px;
+  border: 1px solid #40ABA4;
+  background-color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  width: 430px;
+  border-radius: 12px;
 
+  .google-icon {
+    height: 20px; /* Set the desired height */
+    margin: 0 10px 0 6rem; /* Adjust the margin according to your design */
+  }
+`;
+
+export const AppleButton = styled.div`
+  margin-bottom: 30px;
+  padding: 10px;
+  border: 1px solid #40ABA4;
+  background-color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  width: 430px;
+  border-radius: 12px;
+
+  img {
+    height: 20px; /* Set the desired height */
+    margin: 0 10px 0 6rem; /* Adjust the margin according to your design */
+  }
 `;
 
 export default SignIn;
