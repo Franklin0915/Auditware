@@ -1,13 +1,16 @@
 import React from "react";
 import { colors } from "../../../Setup/colors";
 import styled from 'styled-components'
+import Wrapper from "../Components/Wrapper";
 
 
 function Dashboard(){
     return(
-        <MainContainer style={{color: colors.main}}>
-            
-        </MainContainer>
+        <Wrapper page={'Dashboard'} content={<>
+            <MainContainer style={{color: colors.main}}>
+                <h1 className="text-2xl font-bold">Dashboard</h1>
+            </MainContainer>
+        </>}/>
     )
 }
 
