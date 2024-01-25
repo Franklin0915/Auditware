@@ -35,6 +35,11 @@ function Header({page}) {
 const Container = styled.div`
     width: 100%;
     min-height: 100px;
+    padding: 0 1.5rem;
+    position: sticky;
+    top: 0;
+    background-color: white;
+    z-index: 10;
 
     .search{
         border: 1px solid lightgray;
@@ -52,6 +57,10 @@ const Container = styled.div`
             height: 100%;
             padding-left: 0.5rem;
             font-size: 0.8rem;
+        }
+
+        @media only screen and (max-width: 640px){
+            display: none;
         }
     }
 
