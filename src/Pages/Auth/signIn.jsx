@@ -6,9 +6,13 @@ import './signIn.css';
 import googleImage from './assets/images/google-image.png';
 import apple from './assets/images/apple.png'
 import slideImage from './assets/images/slide.png';
+import { useNavigate } from 'react-router-dom'; 
+
 
 function SignIn() {
   const [login, setLogin] = React.useState({ email: "", password: "" });
+  const navigate = useNavigate();
+  const [showPassword, setShowPassword] = React.useState(false);
 
   function handleChange(event) {
     const { name, value, type, checked } = event.target;
@@ -18,6 +22,14 @@ function SignIn() {
     }));
   }
 
+  function togglePasswordVisibility() {
+    setShowPassword((prevShowPassword) => !prevShowPassword);
+  }
+    
+
+    function toSignUp(){
+      navigate('/signup');
+    }
   return (
     <div className="mainContainer">
       <div className="left">
@@ -30,14 +42,15 @@ function SignIn() {
             <small>Log in with your email to continue</small>
           </div>
           <div className="auth-buttons">
-          <button className="google-button">
-            <img src={googleImage} alt="icon-google" className="google-icon" />
-            Continue with Google
-          </button>
+            <GoogleButton>
+                 <img src={googleImage} alt="Google Image" className="google-icon" />
+                 Continue with Google
+            </GoogleButton>
 
-            <button className="apple-button">
-              <img src={apple} alt=""/> Continue with Apple
-            </button>
+            <AppleButton>
+            <img src={apple}  />
+            Continue with Apple
+             </AppleButton>
           </div>
           <div className="lines">
             <hr />
@@ -58,19 +71,20 @@ function SignIn() {
             />
           </div>
           <div className="second-input">
-            <label htmlFor="input-2">Password</label>
-            <input
-              type="password"
-              name="password"
-              placeholder="Enter your password"
-              value={login.password}
-              onChange={handleChange}
-              id="input-2"
-            />
-            <aside className="forgot-password"> <h1>Forgot password?</h1></aside>
-          </div>
+      <label htmlFor="input-2">Password</label>
+      <input
+        type={showPassword ? "text" : "password"} // Use conditional rendering based on showPassword state
+        name="password"
+        placeholder="Enter your password"
+        value={login.password}
+        onChange={handleChange}
+        id="input-2"
+      />
+      <i className={`fa-regular ${showPassword ? "fa-eye" : "fa-eye-slash"}`} onClick={togglePasswordVisibility}></i>
+      <aside className="forgot-password"><a href="">Forgot password?</a></aside>
+    </div>
           <aside className="login-button">
-            <SubmitButton>Log in</SubmitButton>
+            <SubmitButton onClick={toSignUp} >Log in</SubmitButton>
           </aside>
         </form>
         <div className="sign-up">Don't have an account?<h1>Sign up</h1></div>
@@ -92,5 +106,38 @@ export const SubmitButton = styled.button`
    margin:0 0 20px 0;
 `;
 
+export const GoogleButton = styled.button`
+  margin-bottom: 30px;
+  padding: 10px;
+  border: 1px solid #40ABA4;
+  background-color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  width: 430px;
+  border-radius: 12px;
+
+  .google-icon {
+    height: 20px; /* Set the desired height */
+    margin: 0 10px 0 6rem; /* Adjust the margin according to your design */
+  }
+`;
+
+export const AppleButton = styled.div`
+  margin-bottom: 30px;
+  padding: 10px;
+  border: 1px solid #40ABA4;
+  background-color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  width: 430px;
+  border-radius: 12px;
+
+  img {
+    height: 20px; /* Set the desired height */
+    margin: 0 10px 0 6rem; /* Adjust the margin according to your design */
+  }
+`;
 
 export default SignIn;

@@ -1,7 +1,6 @@
-// ./App.js
-
 import './App.css';
 import Routers from './Setup/routes';
+
 
 function App() {
   return (
