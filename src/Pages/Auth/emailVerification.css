@@ -1,5 +1,7 @@
 
-
+*{
+    /* border: 1px solid black; */
+}
 body{
     padding: 0;
     margin: 0;
@@ -21,6 +23,7 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
+    
 }
 .right {
     width: 50%;
@@ -40,7 +43,7 @@ body{
     border-radius: 24px;
   }
 .name{
-    margin: 0.5rem 0 1rem 90px;
+    margin: 0.5rem 0 2rem 90px;
     display: flex;
     font-size: 48px;
     font-family: cookie;
@@ -54,7 +57,7 @@ body{
     font-weight: 700;
 }
 .m-2{
-    margin: 0 0 0.5rem 0;
+    margin: 0 0 2rem 0;
 }
 .auth-buttons .google-button {
     margin-bottom: 30px;
@@ -125,14 +128,6 @@ body{
   .second-input {
     display: flex;
     flex-direction: column;
-    position: relative;
-  }
-  .fa-regular {
-    position: absolute;
-    top: 50%;
-    right: 10px;
-    transform: translateY(-50%);
-    cursor: pointer;
   }
   
   .first-input > label,
@@ -154,4 +149,11 @@ body{
  .sign-up>a{
     color: #17807a;
     font-weight: 700;
+ }
+ .v-code{
+    font-family: DM sans;
+    margin: 2rem 0 0 0;
+ }
+ .v-code>a{
+    text-decoration: underline;
  }

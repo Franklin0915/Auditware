@@ -39,7 +39,7 @@ const Container = styled.div`
     position: sticky;
     top: 0;
     background-color: white;
-    z-index: 10;
+    z-index: 11;
 
     .search{
         border: 1px solid lightgray;
