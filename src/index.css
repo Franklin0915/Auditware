@@ -18,9 +18,7 @@ code {
 }
 
 *{
-  transition-property: all;
-  transition-duration: 100ms;
-  transition-timing-function: linear;
+  transition: transform 0.3s ease;
 }
 
 .scaleanimate {

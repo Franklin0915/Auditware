@@ -87,10 +87,10 @@ function SignIn() {
             <SubmitButton onClick={toSignUp} >Log in</SubmitButton>
           </aside>
         </form>
-        <div className="sign-up">Don't have an account?<a href="">Sign up</a></div>
+        <div className="sign-up">Don't have an account?<h1>Sign up</h1></div>
       </div>
       <div className="right">
-        <img src={slideImage}/>
+        <img src={slideImage} alt=""/>
       </div>
     </div>
   );

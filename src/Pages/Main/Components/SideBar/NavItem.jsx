@@ -1,15 +1,14 @@
 import React from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import styled from 'styled-components'
-import { colors } from '../../../../Setup/colors'
 import { active, inactive } from './styles'
 
-function NavItem({content, name, link}) {
+function NavItem({content, name, link, onlyIcon}) {
   const location = useLocation()
   
   return (
-    <Container className='flex' style={location.pathname === link ? active : inactive}>
-      <Link to={link} className='flex'>
+    <Container className='flex' style={{...location.pathname === link ? {...active} : {...inactive}, width: `${onlyIcon?'fit-content':'90%'}`}}>
+      <Link to={link} className='flex link'>
         {content}
       </Link>
     </Container>
@@ -30,6 +29,10 @@ const Container = styled.div`
       font-weight: 500;
     }
 
+    .link{
+      width: 100%;
+      height: 100%;
+    }
 
     img{
       width: 17px;
