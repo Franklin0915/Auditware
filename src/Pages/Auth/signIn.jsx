@@ -31,12 +31,12 @@ function SignIn() {
           </div>
           <div className="auth-buttons">
           <button className="google-button">
-            <img src={googleImage} alt="Google Image" className="google-icon" />
+            <img src={googleImage} alt="icon-google" className="google-icon" />
             Continue with Google
           </button>
 
             <button className="apple-button">
-              <img src={apple}/> Continue with Apple
+              <img src={apple} alt=""/> Continue with Apple
             </button>
           </div>
           <div className="lines">
@@ -67,16 +67,16 @@ function SignIn() {
               onChange={handleChange}
               id="input-2"
             />
-            <aside className="forgot-password"> <a href="">Forgot password?</a></aside>
+            <aside className="forgot-password"> <h1>Forgot password?</h1></aside>
           </div>
           <aside className="login-button">
             <SubmitButton>Log in</SubmitButton>
           </aside>
         </form>
-        <div className="sign-up">Don't have an account?<a href="">Sign up</a></div>
+        <div className="sign-up">Don't have an account?<h1>Sign up</h1></div>
       </div>
       <div className="right">
-        <img src={slideImage}/>
+        <img src={slideImage} alt=""/>
       </div>
     </div>
   );
@@ -92,8 +92,5 @@ export const SubmitButton = styled.button`
    margin:0 0 20px 0;
 `;
 
-const GoogleButton = styled.button`
-
-`;
 
 export default SignIn;

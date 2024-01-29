@@ -1,10 +1,11 @@
 import React from 'react'
 import Wrapper from '../Components/Wrapper'
+import ProjectListings from './Includes/ProjectListings'
 
 function Projects() {
   return (
-    <Wrapper onlyIcons={true} page={'Profiles'} content={<>
-        <div>Projects</div>
+    <Wrapper page={'Profiles'} content={<>
+        <ProjectListings/>
     </>}/>
   )
 }
