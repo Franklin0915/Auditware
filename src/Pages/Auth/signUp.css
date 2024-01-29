@@ -1,8 +1,5 @@
 
-*{
-    /* border: 1px solid black; */
-}
-body{
+dy{
     padding: 0;
     margin: 0;
     /* overflow-y: hidden; */
@@ -49,11 +46,14 @@ body{
     font-weight: 400;
 }
 .m-1{
-    margin: 0 0 1rem 0;
+    margin: 0rem 0 1rem 0;
     font-size: 40px;
     font-family:DM Sans;
     color:  #024744;
     font-weight: 700;
+}
+.m-1>p{
+   margin: -3rem 0 0 0;
 }
 .m-2{
     margin: 0 0 0.5rem 0;
@@ -127,7 +127,16 @@ body{
   .second-input {
     display: flex;
     flex-direction: column;
+    position: relative;
   }
+  .fa-regular {
+   position: absolute;
+   top: 50%;
+   right: 10px;
+   transform: translateY(-50%);
+   cursor: pointer;
+   margin: 8px 0 0 0;
+ }
   
   .first-input > label,
   .second-input > label {

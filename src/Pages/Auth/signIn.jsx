@@ -80,7 +80,7 @@ function SignIn() {
         onChange={handleChange}
         id="input-2"
       />
-      <i className={`fa-regular ${showPassword ? "fa-eye" : "fa-eye-slash"}`} onClick={togglePasswordVisibility}></i>
+      <i className={`fa-regular eye ${showPassword ? "fa-eye" : "fa-eye-slash"}`} onClick={togglePasswordVisibility}></i>
       <aside className="forgot-password"><a href="">Forgot password?</a></aside>
     </div>
           <aside className="login-button">

@@ -5,6 +5,7 @@ import Private from './ProtectedRoute'
 import Dashboard from '../Pages/Main/Dashboard/Dashboard'
 import EmailVerification from '../Pages/Auth/emailVerification'
 import ForgetPassword from '../Pages/Auth/forgetPassword'
+import SignUp from '../Pages/Auth/signUp'
 
 function Routers() {
   return (
@@ -17,7 +18,7 @@ function Routers() {
 
 
             <Route path='/auth-login' element={<SignIn />} />
-            <Route path='/auth-register' element={<h1>Register</h1>} />
+            <Route path='/auth-register' element={<SignUp/>} />
         </Routes>
     </div>
   )
