@@ -7,6 +7,11 @@ import googleImage from './assets/images/google-image.png';
 import apple from './assets/images/apple.png'
 import slideImage from './assets/images/slide.png';
 import { useNavigate } from 'react-router-dom'; 
+import Carousel from "../../Common/Components/Carousel";
+import slide from './assets/images/slide.svg'
+import slide1 from './assets/images/slide1.svg'
+import slide2 from './assets/images/slide2.svg'
+import link from './assets/images/link.svg'
 
 
 function SignIn() {
@@ -87,10 +92,12 @@ function SignIn() {
             <SubmitButton onClick={toSignUp} >Log in</SubmitButton>
           </aside>
         </form>
-        <div className="sign-up">Don't have an account?<h1>Sign up</h1></div>
+        <div className="sign-up">Don't have an account?<a>Sign up</a></div>
       </div>
       <div className="right">
-        <img src={slideImage} alt=""/>
+        {/* <div className="link">auditwarepro.com<img height={10} src={link}/></div> */}
+        
+        <Carousel className="carousel"  images={[slide,slide1,slide2]}/>
       </div>
     </div>
   );

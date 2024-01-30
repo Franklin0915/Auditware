@@ -1,6 +1,7 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
 import SignIn from '../Pages/Auth/signIn'
+import SignUp from '../Pages/Auth/signUp'
 import Private from './ProtectedRoute'
 import Dashboard from '../Pages/Main/Dashboard/Dashboard'
 import Projects from '../Pages/Main/Projects/Projects'
