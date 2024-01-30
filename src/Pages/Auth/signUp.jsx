@@ -8,8 +8,9 @@ import slideImage from './assets/images/slide.png';
 import { useNavigate } from 'react-router-dom'; 
 
 function SignUp() {
-  const [login, setLogin] = React.useState({ email: "", password: "", firstName: "", lastName: "" });
+  const [SignUp, setSignUp] = React.useState({ email: "", password: "", firstName: "", lastName: "" });
   const navigate = useNavigate();
+  const [showPassword, setShowPassword] = React.useState(false);
 
   function toSignIn() {
     navigate("/signin");
@@ -17,10 +18,13 @@ function SignUp() {
 
   function handleChange(event) {
     const { name, value, type, checked } = event.target;
-    setLogin((prevForm) => ({
+    setSignUp((prevForm) => ({
       ...prevForm,
       [name]: type === "checkbox" ? checked : value,
     }));
+  }
+  function togglePasswordVisibility() {
+    setShowPassword((prevShowPassword) => !prevShowPassword);
   }
 
   return (
@@ -57,7 +61,7 @@ function SignUp() {
                 type="text"
                 placeholder="Enter your first name"
                 name="firstName"
-                value={login.firstName}
+                value={SignUp.firstName}
                 onChange={handleChange}
                 id="first-name"
               />
@@ -68,7 +72,7 @@ function SignUp() {
                 type="text"
                 placeholder="Enter your last name"
                 name="lastName"
-                value={login.lastName}
+                value={SignUp.lastName}
                 onChange={handleChange}  
                 id="second-name"        
               />
@@ -80,22 +84,24 @@ function SignUp() {
               type="email"
               placeholder="Enter your email"
               name="email"
-              value={login.email}
+              value={SignUp.email}
               onChange={handleChange}
               id="input-1"
             />
           </div>
           <div className="second-input">
-            <label htmlFor="input-2">Create a password</label>
-            <input
-              type="password"
-              name="password"
-              placeholder="Enter your password"
-              value={login.password}
-              onChange={handleChange}
-              id="input-2"
-            />
-          </div>
+      <label htmlFor="input-2">Create a password</label>
+      <input
+        type={showPassword ? "text" : "password"} // Use conditional rendering based on showPassword state
+        name="password"
+        placeholder="Enter your password"
+        value={SignUp.password}
+        onChange={handleChange}
+        id="input-2"
+      />
+      <i className={`fa-regular ${showPassword ? "fa-eye" : "fa-eye-slash"}`} onClick={togglePasswordVisibility}></i>
+    
+    </div>
           <aside className="login-button">
             <SubmitButton>Sign up</SubmitButton>
           </aside>
