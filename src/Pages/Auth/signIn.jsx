@@ -76,18 +76,18 @@ function SignIn() {
             />
           </div>
           <div className="second-input">
-      <label htmlFor="input-2">Password</label>
-      <input
-        type={showPassword ? "text" : "password"} // Use conditional rendering based on showPassword state
-        name="password"
-        placeholder="Enter your password"
-        value={login.password}
-        onChange={handleChange}
-        id="input-2"
-      />
-      <i className={`fa-regular eye ${showPassword ? "fa-eye" : "fa-eye-slash"}`} onClick={togglePasswordVisibility}></i>
-      <aside className="forgot-password"><a href="">Forgot password?</a></aside>
-    </div>
+          <label htmlFor="input-2">Password</label>
+          <input
+            type={showPassword ? "text" : "password"} // Use conditional rendering based on showPassword state
+            name="password"
+            placeholder="Enter your password"
+            value={login.password}
+            onChange={handleChange}
+            id="input-2"
+          />
+          <i className={`fa-regular ${showPassword ? "fa-eye" : "fa-eye-slash"}`} onClick={togglePasswordVisibility}></i>
+          <aside className="forgot-password"><a href="">Forgot password?</a></aside>
+        </div>
           <aside className="login-button">
             <SubmitButton onClick={toSignUp} >Log in</SubmitButton>
           </aside>
