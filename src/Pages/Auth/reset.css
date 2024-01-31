@@ -123,7 +123,13 @@ body{
   .s-o{
     margin:0 0 1rem 0;
   }
-  
+  #input-2>.fa-regular{
+    margin: 5px 0 0 0;
+  }
+  .fa-regular{
+    margin: 15px 0 0 0;
+    
+  }
     
   
   
@@ -133,17 +139,14 @@ body{
     flex-direction: column;
     position: relative;
   }
-  .second-input>.fa-regular {
+  .second-input > .fa-regular {
     position: absolute;
-    top: 50%;
+    top: calc(50% + 5px); /* Add 5px to the top position */
     right: 10px;
     transform: translateY(-50%);
     cursor: pointer;
-    margin: -2px 0 0 0 ;
-    
-    
-    
-  }
+    margin: 4px 0 0 0;
+}
  
 
   
