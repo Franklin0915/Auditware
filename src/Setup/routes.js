@@ -14,13 +14,16 @@ function Routers() {
   return (
     <div className="w-screen h-screen">
         <Routes>
-
+            {/* Main Pages Routes .................. */}
             <Route path='/' element={<Private><Dashboard/></Private>}/>
             <Route path='/projects' element={<Private><Projects/></Private>}/>
             <Route path='/recents' element={<Private><Recents/></Private>}/>
             <Route path='/members' element={<Private><Members/></Private>}/>
-            <Route path='forget-password' element={<ForgetPassword/>}></Route>
-            <Route path='auth-email' element={<EmailVerification/>}></Route>
+            
+
+            {/* Auth Routes Here ................... */}
+            <Route path='/auth-forget-password' element={<ForgetPassword/>}></Route>
+            <Route path='/auth-email-verification' element={<EmailVerification/>}></Route>
             <Route path='/auth-login' element={<SignIn />} />
             <Route path='/auth-register' element={<SignUp/>} />
         </Routes>
