@@ -50,7 +50,7 @@ function SignIn() {
       if(window.confirm('To skip the login, PRESS OK to proceed to the dashboard')){
           sessionStorage.setItem('isLogin', true)
           setTimeout(() => {
-            navigate('/')
+            navigate('/');
           }, 500);
         }
     }      
