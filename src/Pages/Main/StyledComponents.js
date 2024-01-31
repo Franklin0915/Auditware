@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import { colors } from "../../Setup/colors";
 
+
+
 export const GridContent = styled.div`
     width: 100%;
     height: 100%;

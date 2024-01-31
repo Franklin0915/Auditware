@@ -98,7 +98,7 @@ function SideBar({onlyIcons}) {
             <small className='text'>Profile</small>
           }
         </>}/>
-        <NavItem onlyIcon={onlyIcons} link={'/files'} content={<>
+        <NavItem onlyIcon={onlyIcons} link={'/settings'} content={<>
           <img src={home} alt="" />
           {
             !onlyIcons && 
