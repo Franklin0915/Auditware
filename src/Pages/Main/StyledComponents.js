@@ -50,7 +50,7 @@ export const InputContent = styled.div`
         margin-top: 0.3rem;
         padding-left: 0.7rem;
         font-size: 0.9rem;
-        color: rgb(0,0,0,.7);
+        color: rgb(0,0,0,.6);
 
 
     }

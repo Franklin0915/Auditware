@@ -10,6 +10,8 @@ import EmailVerification from '../Pages/Auth/emailVerification'
 import ForgetPassword from '../Pages/Auth/forgetPassword'
 import SignUp from '../Pages/Auth/signUp'
 import Files from '../Pages/Main/Files/Files'
+import Profile from '../Pages/Main/Profile/Profile'
+import Settings from '../Pages/Main/Settings/Settings'
 
 function Routers() {
   return (
@@ -21,6 +23,8 @@ function Routers() {
             <Route path='/recents' element={<Private><Recents/></Private>}/>
             <Route path='/members' element={<Private><Members/></Private>}/>
             <Route path='/files' element={<Private><Files/></Private>}/>
+            <Route path='/profile' element={<Private><Profile/></Private>}/>
+            <Route path='/settings' element={<Private><Settings/></Private>}/>
             
 
             {/* Auth Routes Here ................... */}
