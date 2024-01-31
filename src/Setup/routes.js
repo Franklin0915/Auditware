@@ -9,6 +9,7 @@ import Members from '../Pages/Main/Members/Members'
 import EmailVerification from '../Pages/Auth/emailVerification'
 import ForgetPassword from '../Pages/Auth/forgetPassword'
 import SignUp from '../Pages/Auth/signUp'
+import ResetPassword from '../Pages/Auth/resetPassword'
 
 function Routers() {
   return (
@@ -26,6 +27,7 @@ function Routers() {
             <Route path='/auth-email-verification' element={<EmailVerification/>}></Route>
             <Route path='/auth-login' element={<SignIn />} />
             <Route path='/auth-register' element={<SignUp/>} />
+            <Route path='/auth-reset-password' element={<ResetPassword/>}></Route>
         </Routes>
     </div>
   )
