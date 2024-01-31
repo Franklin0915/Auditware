@@ -1,10 +1,9 @@
 import React from "react";
+import Wrapper from "./Components/Wrapper";
 
 function ResetPassword(){
-    return(
-        <div>
-            reset your password here
-        </div>
-    )
+    return <Wrapper content={<>
+        <h1>Reset Password</h1>
+    </>}/>
 }
 export default ResetPassword
