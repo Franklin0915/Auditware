@@ -1,12 +1,14 @@
 // ./Pages/signIn.js
 
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import './signIn.css';
 import googleImage from './assets/images/google-image.png';
 import apple from './assets/images/apple.png'
 import slideImage from './assets/images/slide.png';
 import { useNavigate } from 'react-router-dom'; 
+import Wrapper from "./Components/Wrapper";
+import { brand } from "../../Assets";
 
 
 function SignIn() {
@@ -25,74 +27,95 @@ function SignIn() {
   function togglePasswordVisibility() {
     setShowPassword((prevShowPassword) => !prevShowPassword);
   }
-    
 
-    function toSignUp(){
-      navigate('/signup');
-    }
+  function toSignUp(){
+    navigate('/signup');
+  }
+
+  const skipLogin = () => {
+    try{
+      if(JSON.parse(sessionStorage.getItem('isLogin'))){
+        if(window.confirm('Want to skip login?')){
+          navigate('/')
+        }
+      }else{
+        if(window.confirm('To skip the login, PRESS OK to proceed to the dashboard')){
+          sessionStorage.setItem('isLogin', true)
+          setTimeout(() => {
+            navigate('/')
+          }, 500);
+        }
+      }
+    }catch(err){
+      if(window.confirm('To skip the login, PRESS OK to proceed to the dashboard')){
+          sessionStorage.setItem('isLogin', true)
+          setTimeout(() => {
+            navigate('/');
+          }, 500);
+        }
+    }      
+  }
+  useEffect(()=>{
+    skipLogin();
+  }, [])
+
   return (
-    <div className="mainContainer">
-      <div className="left">
-        <div className="name">Auditware Pro</div>
-        <div className="left-mid-block">
-          <div className="m-1">
-            <p>Welcome back!</p>
-          </div>
-          <div className="m-2">
-            <small>Log in with your email to continue</small>
-          </div>
-          <div className="auth-buttons">
-            <GoogleButton>
-                 <img src={googleImage} alt="Google Image" className="google-icon" />
-                 Continue with Google
-            </GoogleButton>
+    <Wrapper content={<>
+      <div className="left-mid-block">
+        <div className="m-1">
+          <p>Welcome back!</p>
+        </div>
+        <div className="m-2">
+          <small>Log in with your email to continue</small>
+        </div>
+        <div className="auth-buttons">
+          <GoogleButton>
+              <img src={googleImage} alt="Google Image" className="google-icon" />
+              Continue with Google
+          </GoogleButton>
 
-            <AppleButton>
-            <img src={apple}  />
-            Continue with Apple
-             </AppleButton>
-          </div>
-          <div className="lines">
-            <hr />
-            <span className="or-text">or</span>
-            <hr />
-          </div>
+          <AppleButton>
+          <img src={apple}  />
+          Continue with Apple
+          </AppleButton>
         </div>
-        <form>
-          <div className="first-input">
-            <label htmlFor="input-1">Email</label>
-            <input
-              type="email"
-              placeholder="Enter your email"
-              name="email"
-              value={login.email}
-              onChange={handleChange}
-              id="input-1"
-            />
-          </div>
-          <div className="second-input">
-          <label htmlFor="input-2">Password</label>
+        <div className="lines">
+          <hr />
+          <span className="or-text">or</span>
+          <hr />
+        </div>
+      </div>
+      <form>
+        <div className="first-input">
+          <label htmlFor="input-1">Email</label>
           <input
-            type={showPassword ? "text" : "password"} // Use conditional rendering based on showPassword state
-            name="password"
-            placeholder="Enter your password"
-            value={login.password}
+            type="email"
+            placeholder="Enter your email"
+            name="email"
+            value={login.email}
             onChange={handleChange}
-            id="input-2"
+            id="input-1"
           />
-          <i className={`fa-regular ${showPassword ? "fa-eye" : "fa-eye-slash"}`} onClick={togglePasswordVisibility}></i>
-          <aside className="forgot-password"><a href="">Forgot password?</a></aside>
         </div>
-          <aside className="login-button">
-            <SubmitButton onClick={toSignUp} >Log in</SubmitButton>
-          </aside>
-        </form>
-        <div className="sign-up">Don't have an account?<h1>Sign up</h1></div>
-      </div>
-      <div className="right">
-        <img src={slideImage} alt=""/>
-      </div>
-    </div>
+        <div className="second-input">
+    <label htmlFor="input-2">Password</label>
+    <input
+      type={showPassword ? "text" : "password"} // Use conditional rendering based on showPassword state
+      name="password"
+      placeholder="Enter your password"
+      value={login.password}
+      onChange={handleChange}
+      id="input-2"
+    />
+    <i className={`fa-regular eye ${showPassword ? "fa-eye" : "fa-eye-slash"}`} onClick={togglePasswordVisibility}></i>
+    <aside className="forgot-password"><a href="">Forgot password?</a></aside>
+  </div>
+        <aside className="login-button">
+          <SubmitButton onClick={toSignUp} >Log in</SubmitButton>
+        </aside>
+      </form>
+      <div className="sign-up">Don't have an account?<h1>Sign up</h1></div>
+    </>}/>
   );
 }
 
