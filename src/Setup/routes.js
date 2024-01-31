@@ -19,6 +19,7 @@ function Routers() {
             <Route path='/projects' element={<Private><Projects/></Private>}/>
             <Route path='/recents' element={<Private><Recents/></Private>}/>
             <Route path='/members' element={<Private><Members/></Private>}/>
+            <Route path='/files' element={<Private><Files/></Private>}/>
             
 
             {/* Auth Routes Here ................... */}
