@@ -9,6 +9,7 @@ import Members from '../Pages/Main/Members/Members'
 import EmailVerification from '../Pages/Auth/emailVerification'
 import ForgetPassword from '../Pages/Auth/forgetPassword'
 import SignUp from '../Pages/Auth/signUp'
+import Files from '../Pages/Main/Files/Files'
 
 function Routers() {
   return (
