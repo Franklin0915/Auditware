@@ -5,7 +5,7 @@ import Toggler from '../../../Common/Components/Toggler'
 
 function Settings() {
   return <Wrapper content={<>
-    <Content className='hidden f v-flex a-i-s'>
+    <Content className='flex v-flex a-i-s'>
         <section className="flex v-flex a-i-s " style={{marginBottom: '2rem'}}>
             <div className="flex" style={{marginBottom: '0.5rem'}}>
                 <svg width="24" height="22" viewBox="0 0 24 22" fill="none" xmlns="http://www.w3.org/2000/svg">
