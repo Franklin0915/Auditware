@@ -11,7 +11,7 @@ function Profile() {
   return (
     <Wrapper page={'Profiles'} content={<>
 
-        <SectionOne className='flex'>
+        <SectionOne className='hidden f'>
           <div className="left flex v-flex a-i-s">
             <section className="flex">
               <aside className="profileImageContainer">
@@ -48,7 +48,7 @@ function Profile() {
             <div className='mb-1 lst'>DSR Audit Tax Consultancy</div>
           </div>
         </SectionOne>
-        <SectionTwo className='flex v-flex a-i-s mt-1'>
+        <SectionTwo className='hidden f v-flex a-i-s mt-1'>
           <div className='title'>Projects</div>
           <br />
           <GridContent>

@@ -5,7 +5,7 @@ import { colors } from '../../../../Setup/colors'
 
 function FileCard({name, size, type}) {
   return (
-    <Container className='flex'>
+    <Container className='hidden f'>
         <img src={type === 'doc'?doc:pdf} alt="" />
         <div className="details flex v-flex a-i-s ">
             <p>{name}</p>
