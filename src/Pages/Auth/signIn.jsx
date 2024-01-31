@@ -11,7 +11,7 @@ import Carousel from "../../Common/Components/Carousel";
 import slide from './assets/images/slide.svg'
 import slide1 from './assets/images/slide1.svg'
 import slide2 from './assets/images/slide2.svg'
-import link from './assets/images/link.svg'
+
 
 
 function SignIn() {
@@ -95,7 +95,7 @@ function SignIn() {
         <div className="sign-up">Don't have an account?<a>Sign up</a></div>
       </div>
       <div className="right">
-        {/* <div className="link">auditwarepro.com<img height={10} src={link}/></div> */}
+
         
         <Carousel className="carousel"  images={[slide,slide1,slide2]}/>
       </div>

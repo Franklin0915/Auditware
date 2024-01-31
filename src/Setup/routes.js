@@ -9,6 +9,8 @@ import Recents from '../Pages/Main/Recents/Recents'
 import Members from '../Pages/Main/Members/Members'
 import EmailVerification from '../Pages/Auth/emailVerification'
 import ForgetPassword from '../Pages/Auth/forgetPassword'
+import ResetPassword from '../Pages/Auth/resetPassword'
+import Payment from '../Pages/Payment/payment'
 
 function Routers() {
   return (
@@ -19,7 +21,9 @@ function Routers() {
             <Route path='/projects' element={<Private><Projects/></Private>}/>
             <Route path='/recents' element={<Private><Recents/></Private>}/>
             <Route path='/members' element={<Private><Members/></Private>}/>
+            <Route path='payment' element={<Payment/>}></Route>
             <Route path='forget-password' element={<ForgetPassword/>}></Route>
+            <Route path='reset-password'element={<ResetPassword/>} ></Route>
             <Route path='auth-email' element={<EmailVerification/>}></Route>
             <Route path='/auth-login' element={<SignIn />} />
             <Route path='/auth-register' element={<SignUp/>} />
