@@ -9,6 +9,7 @@ import slideImage from './assets/images/slide.png';
 import { useNavigate } from 'react-router-dom'; 
 import Wrapper from "./Components/Wrapper";
 import { brand } from "../../Assets";
+import session from "../../Store/Session";
 
 
 function SignIn() {
@@ -32,32 +33,13 @@ function SignIn() {
     navigate('/signup');
   }
 
-  const skipLogin = () => {
-    try{
-      if(JSON.parse(sessionStorage.getItem('isLogin'))){
-        if(window.confirm('Want to skip login?')){
-          navigate('/')
-        }
-      }else{
-        if(window.confirm('To skip the login, PRESS OK to proceed to the dashboard')){
-          sessionStorage.setItem('isLogin', true)
-          setTimeout(() => {
-            navigate('/')
-          }, 500);
-        }
-      }
-    }catch(err){
-      if(window.confirm('To skip the login, PRESS OK to proceed to the dashboard')){
-          sessionStorage.setItem('isLogin', true)
-          setTimeout(() => {
-            navigate('/');
-          }, 500);
-        }
-    }      
+  const skipLogin = (e) => {
+    e.preventDefault()
+    session.set('isLogin', true)
+    setTimeout(() => {
+      navigate('/')
+    }, 500);
   }
-  useEffect(()=>{
-    skipLogin();
-  }, [])
 
   return (
     <Wrapper content={<>
@@ -85,7 +67,7 @@ function SignIn() {
           <hr />
         </div>
       </div>
-      <form>
+      <form onSubmit={(e)=>skipLogin(e)}>
         <div className="first-input">
           <label htmlFor="input-1">Email</label>
           <input
@@ -98,20 +80,20 @@ function SignIn() {
           />
         </div>
         <div className="second-input">
-    <label htmlFor="input-2">Password</label>
-    <input
-      type={showPassword ? "text" : "password"} // Use conditional rendering based on showPassword state
-      name="password"
-      placeholder="Enter your password"
-      value={login.password}
-      onChange={handleChange}
-      id="input-2"
-    />
-    <i className={`fa-regular eye ${showPassword ? "fa-eye" : "fa-eye-slash"}`} onClick={togglePasswordVisibility}></i>
-    <aside className="forgot-password"><a href="">Forgot password?</a></aside>
-  </div>
+          <label htmlFor="input-2">Password</label>
+          <input
+            type={showPassword ? "text" : "password"} // Use conditional rendering based on showPassword state
+            name="password"
+            placeholder="Enter your password"
+            value={login.password}
+            onChange={handleChange}
+            id="input-2"
+          />
+          <i className={`fa-regular eye ${showPassword ? "fa-eye" : "fa-eye-slash"}`} onClick={togglePasswordVisibility}></i>
+          <aside className="forgot-password"><a href="">Forgot password?</a></aside>
+        </div>
         <aside className="login-button">
-          <SubmitButton onClick={toSignUp} >Log in</SubmitButton>
+          <SubmitButton>Log in</SubmitButton>
         </aside>
       </form>
       <div className="sign-up">Don't have an account?<h1>Sign up</h1></div>
