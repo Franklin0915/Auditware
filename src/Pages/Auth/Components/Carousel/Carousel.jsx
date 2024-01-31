@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
-import { authImage, authImage2, authImage3 } from '../../../../Assets';
+import {  authImage2, authImage3 } from '../../../../Assets';
+import {slide1, slide2,slide3 } from '../../../../Assets';
 import StepOne from './StepOne';
 import StepTwo from './StepTwo';
 import StepThree from './StepThree';
@@ -28,7 +29,7 @@ function Carousel() {
 
     return (
         <Container>
-            <img src={step === 1 ? authImage : step === 2 ? authImage2 : authImage3} alt="" className='object-fit sideImage'/>
+            <img src={step === 1 ? slide1 : step === 2 ? slide2 : slide3} alt="" className='object-fit sideImage'/>
             <div className="carousel-content">
                 <div className="head w-full flex j-c-e">
                     <div className='link flex'>
@@ -75,7 +76,13 @@ const Container = styled.div`
         right: 0;
         left: 0;
         bottom: 0;
-        background: linear-gradient(to bottom, #00000058, #000000e0);
+        background: linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0.29), /* #00000058 with 50% reduced darkness */
+            rgba(0, 0, 0, 0.70)  /* #000000e0 with 50% reduced darkness */
+          );
+          
+          
         /* background-color: #00000084; */
         display: flex;
         flex-direction: column;

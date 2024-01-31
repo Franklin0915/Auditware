@@ -82,7 +82,7 @@ function SignIn() {
         <div className="second-input">
           <label htmlFor="input-2">Password</label>
           <input
-            type={showPassword ? "text" : "password"} // Use conditional rendering based on showPassword state
+            type={showPassword ? "text" : "password"} 
             name="password"
             placeholder="Enter your password"
             value={login.password}
