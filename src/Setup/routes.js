@@ -12,6 +12,7 @@ import SignUp from '../Pages/Auth/signUp'
 import Files from '../Pages/Main/Files/Files'
 import Profile from '../Pages/Main/Profile/Profile'
 import Settings from '../Pages/Main/Settings/Settings'
+import Workspaces from '../Pages/Main/Workspaces/Workspaces'
 
 function Routers() {
   return (
@@ -22,6 +23,7 @@ function Routers() {
             <Route path='/projects' element={<Private><Projects/></Private>}/>
             <Route path='/recents' element={<Private><Recents/></Private>}/>
             <Route path='/members' element={<Private><Members/></Private>}/>
+            <Route path='/workspaces' element={<Private><Workspaces/></Private>}/>
             <Route path='/files' element={<Private><Files/></Private>}/>
             <Route path='/profile' element={<Private><Profile/></Private>}/>
             <Route path='/settings' element={<Private><Settings/></Private>}/>

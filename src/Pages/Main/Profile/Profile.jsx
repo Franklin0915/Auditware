@@ -11,7 +11,7 @@ function Profile() {
   return (
     <Wrapper page={'Profiles'} content={<>
 
-        <SectionOne className='hidden f'>
+        <SectionOne className='flex'>
           <div className="left flex v-flex a-i-s">
             <section className="flex">
               <aside className="profileImageContainer">
@@ -48,7 +48,9 @@ function Profile() {
             <div className='mb-1 lst'>DSR Audit Tax Consultancy</div>
           </div>
         </SectionOne>
-        <SectionTwo className='hidden f v-flex a-i-s mt-1'>
+
+
+        <SectionTwo className='flex v-flex a-i-s mt-1'>
           <div className='title'>Projects</div>
           <br />
           <GridContent>
@@ -67,9 +69,22 @@ const SectionOne = styled.div`
   padding-bottom: 3rem;
   border-bottom: 1px solid rgb(0,0,0,.1);
 
+  @media only screen and (max-width: 777px){
+    flex-direction: column;
+
+    .right{
+      margin-top: 1rem;
+      width: 100%;
+    }
+  }
+
   .left{
     width: 500px;
     align-items: flex-start;
+
+    @media only screen and (max-width: 777px){
+      width: 100%;
+    }
   }
 
   .right{
@@ -111,6 +126,13 @@ const SectionOne = styled.div`
     border: 1px solid rgb(0,0,0,.1);
     height: 400px;
     margin: 0 5rem;
+
+    @media only screen and (max-width: 899px){
+      margin: 0 2rem;
+    }
+    @media only screen and (max-width: 777px){
+      display: none;
+    }
   }
 
 `

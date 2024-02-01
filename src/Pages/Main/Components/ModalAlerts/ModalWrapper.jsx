@@ -10,7 +10,7 @@ function ModalWrapper({content, status, title, close}) {
             <BackDrop onClick={()=>close()}/>
             <Content className='scaleanimate'>
                 <div className="content_title flex j-c-b">
-                    <h1 style={{fontSize: '1.4rem', fontWeight: '500'}}>{title||'_____'}</h1>
+                    <h1 style={{fontSize: '1.2rem', fontWeight: '500'}}>{title||'_____'}</h1>
                     
                     <svg onClick={()=>close()} className="closeModal" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
@@ -48,7 +48,7 @@ const Content = styled.div`
     z-index: 10;
 
     .closeModal{
-        width: 30px;
+        width: 20px;
         cursor: pointer;
 
         &:hover{

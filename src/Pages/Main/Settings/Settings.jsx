@@ -5,21 +5,21 @@ import Toggler from '../../../Common/Components/Toggler'
 
 function Settings() {
   return <Wrapper content={<>
-    <Content className='hidden f v-flex a-i-s'>
+    <Content className='flex v-flex a-i-s'>
         <section className="flex v-flex a-i-s " style={{marginBottom: '2rem'}}>
             <div className="flex" style={{marginBottom: '0.5rem'}}>
                 <svg width="24" height="22" viewBox="0 0 24 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M7 14.75C7.55417 14.75 8 15.2516 8 15.875C8 16.4984 7.55417 17 7 17H5C4.44583 17 4 16.4984 4 15.875C4 15.2516 4.44583 14.75 5 14.75H7ZM15 14.75C15.5542 14.75 16 15.2516 16 15.875C16 16.4984 15.5542 17 15 17H10.3333C9.77917 17 9.33333 16.4984 9.33333 15.875C9.33333 15.2516 9.77917 14.75 10.3333 14.75H15ZM21.3333 0.5C22.8042 0.5 24 1.84297 24 3.5V18.5C24 20.1547 22.8042 21.5 21.3333 21.5H2.66667C1.19375 21.5 0 20.1547 0 18.5V3.5C0 1.84297 1.19375 0.5 2.66667 0.5H21.3333ZM21.3333 2.75H2.66667C2.29833 2.75 2 3.08562 2 3.5V5H22V3.5C22 3.08562 21.7 2.75 21.3333 2.75ZM22 9.5H2V18.5C2 18.9125 2.29833 19.25 2.66667 19.25H21.3333C21.7 19.25 22 18.9125 22 18.5V9.5Z" fill="black" fill-opacity="0.6"/>
                 </svg>
-                <div style={{marginLeft: '10px'}}>
+                <div style={{marginLeft: '10px',textAlign: 'left'}}>
                     Update payment method (Current payment method: Visa, ending with - **58)
                 </div>
             </div>
-            <p style={{color: 'gray'}}>Change your payment method on file. Your payment method would be used for billing.</p>
+            <p style={{color: 'gray', textAlign: 'left'}}>Change your payment method on file. Your payment method would be used for billing.</p>
         </section>
 
         <section className="Twofa flex j-c-b">
-            <section className="flex v-flex a-i-s">
+            <section className="flex v-flex a-i-s pr-1">
                 <div className="flex" style={{marginBottom: '0.5rem'}}>
                     <svg width="24" height="29" viewBox="0 0 24 29" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <g clip-path="url(#clip0_418_8005)">
@@ -33,11 +33,11 @@ function Settings() {
                     </defs>
                     </svg>
 
-                    <div style={{marginLeft: '10px'}}>
+                    <div style={{marginLeft: '10px', textAlign: 'left'}}>
                         Two-factor authentication (2FA)
                     </div>
                 </div>
-                <p style={{color: 'gray'}}>Enable two-factor authentication to provide additional security for your account.</p>
+                <p style={{color: 'gray', textAlign: 'left'}}>Enable two-factor authentication to provide additional security for your account.</p>
             </section>
 
             <Toggler/>
