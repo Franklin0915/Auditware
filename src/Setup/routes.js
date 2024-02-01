@@ -13,6 +13,7 @@ import Files from '../Pages/Main/Files/Files'
 import Profile from '../Pages/Main/Profile/Profile'
 import Settings from '../Pages/Main/Settings/Settings'
 import Workspaces from '../Pages/Main/Workspaces/Workspaces'
+import ResetPassword from '../Pages/Auth/resetPassword'
 
 function Routers() {
   return (
@@ -34,6 +35,7 @@ function Routers() {
             <Route path='/auth-email-verification' element={<EmailVerification/>}></Route>
             <Route path='/auth-login' element={<SignIn />} />
             <Route path='/auth-register' element={<SignUp/>} />
+            <Route path='/auth-reset-password' element={<ResetPassword/>}></Route>
         </Routes>
     </div>
   )
