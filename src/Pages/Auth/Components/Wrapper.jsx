@@ -19,7 +19,10 @@ const Container = styled.div`
   width: 100vw;
   height: 100vh;
   padding: 1rem;
-`
+ 
+
+
+  `
 
 const Content = styled.div`
   width: 100%;

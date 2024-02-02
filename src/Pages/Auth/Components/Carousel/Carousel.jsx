@@ -132,6 +132,10 @@ const Container = styled.div`
             font-size: 1.2rem;
         }
     }
-`
+    @media (max-width: 767px) {
+        display:none;
+       }
+
+    `
 
 export default Carousel

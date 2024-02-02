@@ -112,14 +112,14 @@ body{
     flex-direction: column;
     align-items: center;
   }
-  #input-1,
+  /* #input-1,
   #input-2 {
     border: 1px solid #ccc;
     width: 430px;
-    margin: 0.5rem 0; /* Adjusted margin */
+    margin: 0.5rem 0; 
     padding: 10px;
     border-radius: 12px;
-  }
+  } */
   .s-o{
     margin:0 0 1rem 0;
   }
@@ -139,23 +139,23 @@ body{
     flex-direction: column;
     position: relative;
   }
-  .second-input > .fa-regular {
+  /* .second-input > .fa-regular {
     position: absolute;
-    top: calc(50% + 5px); /* Add 5px to the top position */
+    top: calc(50% + 5px); 
     right: 10px;
     transform: translateY(-50%);
     cursor: pointer;
     margin: 4px 0 0 0;
-}
+} */
  
 
   
-  .first-input > label,
+  /* .first-input > label,
   .second-input > label {
     margin-bottom: -8px;
     display: flex;
     
-  }
+  } */
   .forgot-password>a{
     display: flex;
     justify-content: flex-end;

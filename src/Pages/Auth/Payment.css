@@ -1,8 +1,8 @@
-
+/* 
 dy{
     padding: 0;
     margin: 0;
-    /* overflow-y: hidden; */
+    
     height: 100%;
 }
 
@@ -13,7 +13,7 @@ dy{
 }
 .left{
     width: 50%;
-    /* align-items: center; */
+    
     
 }
 .left-mid-block{
@@ -23,7 +23,7 @@ dy{
 }
 .right {
     width: 50%;
-    height: 100vh; /* Increase the height of the right div */
+    height: 100vh; 
     overflow: hidden;
     display: flex;
     align-items: center;
@@ -32,9 +32,9 @@ dy{
   }
   
   .right img {
-    width: 100%; /* Ensure the image doesn't exceed the width of the container */
-    max-height: 100%; /* Ensure the image doesn't exceed the height of the container */
-    object-fit:cover; /* Contain the image within the container without stretching */
+    width: 100%; 
+    max-height: 100%; 
+    object-fit:cover; 
     padding: 10px;
     border-radius: 24px;
   }
@@ -71,8 +71,8 @@ dy{
   }
   
   .auth-buttons .google-icon {
-    height: 20px; /* Set the desired height */
-    margin: 0 10px 0 6rem; /* Add some margin to separate the icon from the text */
+    height: 20px; 
+    margin: 0 10px 0 6rem; 
   }
   .apple-button {
     margin-bottom: 30px;
@@ -87,8 +87,8 @@ dy{
   }
   
   .apple-button img {
-    height: 20px; /* Set the desired height */
-    margin: 0 10px 0 6rem; /* Adjust the margin according to your design */
+    height: 20px; 
+    margin: 0 10px 0 6rem; 
   }
   
   
@@ -114,36 +114,48 @@ dy{
     flex-direction: column;
     align-items: center;
   }
-  /* #input-1,
+  #input-1,
   #input-2 {
     border: 1px solid #ccc;
-    width: 430px;
+    width: 200px;
     margin: 0.5rem 0; 
     padding: 10px;
     border-radius: 12px;
-  } */
-  
-  /* .first-input,
+  }
+ 
+  .first-input,
   .second-input {
     display: flex;
     flex-direction: column;
     position: relative;
-  } */
-  /* .fa-regular {
+    
+   
+  }
+  .first-input{
+    margin: 0 15px 0 0;
+  }
+  .second-input{
+    margin: 0 0 0 15px;
+  }
+  .second-input
+ 
+  
+  .fa-regular {
    position: absolute;
    top: 50%;
    right: 10px;
    transform: translateY(-50%);
    cursor: pointer;
    margin: 8px 0 0 0;
- } */
+ }
   
-  /* .first-input > label,
+  .first-input > label,
   .second-input > label {
     margin-bottom: -8px;
     display: flex;
     
-  } */
+  }
+ 
   .forgot-password>a{
     display: flex;
     justify-content: flex-end;
@@ -162,21 +174,23 @@ dy{
     color: #058a83;
     font-weight: 700;
  }
- /* .name-field{
+ .name-field{
     display: flex;
+    flex-direction: column;
     align-items: center;
     margin: 1rem 0 10px 0;
     
- } */
- /* .f-name{
+ }
+ .f-name{
     display: flex;
     flex-direction: column;
+    margin: 0 0 0 25px;
  }
  .f-name>label{
     display: flex;
  }
  .f-name>input{
-    width: 200px;
+    width: 430px;
     padding: 10px;
     border-radius: 12px;
     border: 1px solid #ccc;
@@ -187,16 +201,17 @@ dy{
  }
  .l-name>label{
     display: flex;
+    margin: ;
  }
  .l-name>input{
-    width: 200px;
+    width: 430px;
     padding: 10px;
     border-radius: 12px;
     border: 1px solid #ccc;
- } */
- /* #first-name{
+ }
+ #first-name{
     margin: 0 30px 0 0;
- } */
+ }
  .terms{
     font-size: 14px;
     font-family: poppins;
@@ -209,3 +224,9 @@ dy{
  .login-button{
     margin: 10px 0 0 0;
  }
+ .flex-input{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin: 0 0 2rem 0;
+ } */

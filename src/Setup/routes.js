@@ -10,6 +10,7 @@ import EmailVerification from '../Pages/Auth/emailVerification'
 import ForgetPassword from '../Pages/Auth/forgetPassword'
 import SignUp from '../Pages/Auth/signUp'
 import ResetPassword from '../Pages/Auth/resetPassword'
+import Payment from '../Pages/Auth/Payment'
 
 function Routers() {
   return (
@@ -28,6 +29,7 @@ function Routers() {
             <Route path='/auth-login' element={<SignIn />} />
             <Route path='/auth-register' element={<SignUp/>} />
             <Route path='/auth-reset-password' element={<ResetPassword/>}></Route>
+            <Route path='/auth-payment' element={<Payment/>}></Route>
         </Routes>
     </div>
   )

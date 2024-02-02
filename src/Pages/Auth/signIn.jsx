@@ -10,6 +10,7 @@ import { useNavigate } from 'react-router-dom';
 import Wrapper from "./Components/Wrapper";
 import { brand } from "../../Assets";
 import session from "../../Store/Session";
+import { Link } from 'react-router-dom';
 
 
 function SignIn() {
@@ -42,7 +43,7 @@ function SignIn() {
   }
 
   return (
-    <Wrapper content={<>
+    <Wrapper  content={<>
       <div className="left-mid-block">
         <div className="m-1">
           <p>Welcome back!</p>
@@ -53,7 +54,7 @@ function SignIn() {
         <div className="auth-buttons">
           <GoogleButton>
               <img src={googleImage} alt="Google Image" className="google-icon" />
-              Continue with Google
+             Continue with Google
           </GoogleButton>
 
           <AppleButton>
@@ -68,20 +69,20 @@ function SignIn() {
         </div>
       </div>
       <form onSubmit={(e)=>skipLogin(e)}>
-        <div className="first-input">
-          <label htmlFor="input-1">Email</label>
-          <input
-            type="email"
-            placeholder="Enter your email"
-            name="email"
-            value={login.email}
-            onChange={handleChange}
-            id="input-1"
-          />
-        </div>
-        <div className="second-input">
+          <InputContainer className="first-input">
+              <label htmlFor="input-1">Email</label>
+              <MainInput
+                type="email"
+                placeholder="Enter your email"
+                name="email"
+                value={login.email}
+                onChange={handleChange}
+                id="input-1"
+              />
+          </InputContainer>
+        <InputContainer className="second-input">
           <label htmlFor="input-2">Password</label>
-          <input
+          <MainInput
             type={showPassword ? "text" : "password"} 
             name="password"
             placeholder="Enter your password"
@@ -90,13 +91,13 @@ function SignIn() {
             id="input-2"
           />
           <i className={`fa-regular eye ${showPassword ? "fa-eye" : "fa-eye-slash"}`} onClick={togglePasswordVisibility}></i>
-          <aside className="forgot-password"><a href="">Forgot password?</a></aside>
-        </div>
+          <aside className="forgot-password"><Link to="">Forgot password?</Link></aside>
+        </InputContainer>
         <aside className="login-button">
           <SubmitButton>Log in</SubmitButton>
         </aside>
       </form>
-      <div className="sign-up">Don't have an account?<h1>Sign up</h1></div>
+      <div className="sign-up">Don't have an account?<Link to="">Sign up</Link></div>
     </>}/>
   );
 }
@@ -109,8 +110,13 @@ export const SubmitButton = styled.button`
    color:white;
    background-color: #40ABA4;
    margin:0 0 20px 0;
-`;
 
+   @media (max-width: 414px) {
+    width: 340px;
+    margin: 0 0 1rem 0;
+  }
+
+   `;
 export const GoogleButton = styled.button`
   margin-bottom: 30px;
   padding: 10px;
@@ -122,9 +128,28 @@ export const GoogleButton = styled.button`
   width: 430px;
   border-radius: 12px;
 
+  @media (max-width: 414px) {
+    width: 340px;
+    margin: 0 0 1rem 0;
+  }
+
   .google-icon {
     height: 20px; /* Set the desired height */
-    margin: 0 10px 0 6rem; /* Adjust the margin according to your design */
+    margin: 0 10px 0 6rem;
+  }
+
+  p {
+    margin: 0; /* Reset margin for the text */
+  }
+  
+  @media (max-width: 414px) {
+    .google-icon {
+      margin: 0 0.5rem 0 4rem; 
+    }
+
+    p {
+      margin-left: 10px; /* Add margin to the left of the text */
+    }
   }
 `;
 
@@ -143,6 +168,63 @@ export const AppleButton = styled.div`
     height: 20px; /* Set the desired height */
     margin: 0 10px 0 6rem; /* Adjust the margin according to your design */
   }
+
+  @media (max-width: 414px) {
+    width: 340px;
+    margin: 0 0 1rem 0;
+    
+    img {
+      margin: 0 0.5rem 0 4rem; /* Adjust the margin to move the image to the left */
+    }
+  }
 `;
+  
+export const MainInput = styled.input`
+  border: 1px solid #ccc;
+  width: 430px;
+  margin: 0.5rem 0;
+  padding: 10px;
+  border-radius: 12px;
+
+  @media (max-width: 414px) {
+    width: 340px; 
+    margin: 0 0 1rem 0;
+
+    /* Select the label that is an adjacent sibling of EmailInput within the same container */
+    + label {
+      margin: 0 0 20px 0;
+    }
+  }
+`;
+
+
+export const InputContainer = styled.div`
+
+margin:0.5rem 0 0 0;
+
+label {
+  display: flex; /* Set label to block display to position it above the input */
+  margin-bottom: -7px; /* Adjusted margin to create a small gap between label and input */
+}
+.fa-regular{
+  position: absolute;
+  top: calc(50% - 0.8rem); 
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  
+  // margin:0 0 10px 0; 
+}
+
+@media (max-width: 414px) {
+  label {
+    margin-bottom: 5px; /* Adjusted margin for smaller screens */
+  }
+}
+  
+
+`;
+
+
 
 export default SignIn;

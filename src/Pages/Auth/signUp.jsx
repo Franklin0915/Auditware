@@ -8,6 +8,8 @@ import slideImage from './assets/images/slide.png';
 import { useNavigate } from 'react-router-dom'; 
 import Wrapper from "./Components/Wrapper";
 import { brand } from "../../Assets";
+import { MainInput } from "./signIn";
+import { InputContainer } from "./signIn";
 
 function SignUp() {
   const [SignUp, setSignUp] = React.useState({ email: "", password: "", firstName: "", lastName: "" });
@@ -54,8 +56,8 @@ function SignUp() {
             </div>
           </div>
           <form>
-            <div className="name-field">
-              <div className="f-name">
+            <NameField className="name-field">
+              <Name className="f-name">
                 <label htmlFor="first-name">First name</label>
                 <input
                   type="text"
@@ -65,8 +67,8 @@ function SignUp() {
                   onChange={handleChange}
                   id="first-name"
                 />
-              </div>
-              <div className="l-name">
+              </Name>
+              <Name className="l-name">
                 <label htmlFor="second-name">Last name</label>
                 <input
                   type="text"
@@ -76,11 +78,11 @@ function SignUp() {
                   onChange={handleChange}  
                   id="second-name"        
                 />
-              </div>
-            </div>
-            <div className="first-input">
+              </Name>
+            </NameField>
+            <InputContainer className="first-input">
               <label htmlFor="input-1">Email</label>
-              <input
+              <MainInput
                 type="email"
                 placeholder="Enter your email"
                 name="email"
@@ -88,10 +90,10 @@ function SignUp() {
                 onChange={handleChange}
                 id="input-1"
               />
-            </div>
-            <div className="second-input">
+            </InputContainer>
+            <InputContainer className="second-input">
         <label htmlFor="input-2">Create a password</label>
-        <input
+        <MainInput
           type={showPassword ? "text" : "password"} // Use conditional rendering based on showPassword state
           name="password"
           placeholder="Enter your password"
@@ -101,7 +103,7 @@ function SignUp() {
         />
         <i className={`fa-regular ${showPassword ? "fa-eye" : "fa-eye-slash"}`} onClick={togglePasswordVisibility}></i>
       
-      </div>
+      </InputContainer>
             <aside className="login-button">
               <SubmitButton>Sign up</SubmitButton>
             </aside>
@@ -113,5 +115,45 @@ function SignUp() {
     </>}/>
   );
 }
+
+
+export const Name = styled.div`
+
+display: flex;
+flex-direction: column;
+
+label{
+  display: flex;
+}
+
+input{
+  width: 200px;
+    padding: 10px;
+    border-radius: 12px;
+    border: 1px solid #ccc;
+}
+#first-name{
+  margin: 0 30px 0 0;
+}
+
+`;
+
+export const NameField = styled.div`
+display: flex;
+align-items: center;
+margin: 1rem 0 10px 0;
+
+@media (max-width: 414px) {
+  display:flex;
+  flex-direction:column;
+
+    input{
+      width:340px;
+    }
+}
+
+`;
+
+
 
 export default SignUp;
