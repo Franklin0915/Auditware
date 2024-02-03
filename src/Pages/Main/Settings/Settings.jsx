@@ -1,9 +1,33 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Wrapper from '../Components/Wrapper'
 import styled from 'styled-components'
 import Toggler from '../../../Common/Components/Toggler'
+import Input from '../../../Common/Input'
 
 function Settings() {
+
+    const [details, setDetails] = useState({
+        name: '',
+        age: '',
+        town: '',
+        isHoly: false
+    })
+
+    const handleChange = (event, name) => {
+        const {type, value, checked} = event.target;
+        setDetails(prev=>{
+            if(checked){
+                return {...details, [name]:checked}
+            }
+            return {...details, [name]:value}
+        })
+    }
+
+    useEffect(()=>{
+        console.log(details)
+    }, [details])
+
+
   return <Wrapper content={<>
     <Content className='flex v-flex a-i-s'>
         <section className="flex v-flex a-i-s " style={{marginBottom: '2rem'}}>
@@ -42,9 +66,18 @@ function Settings() {
 
             <Toggler/>
         </section>
+
+        
+        <Input imageType={'masta'} placeholder={'Enter your name'} value={details.name} setValue={(event, value)=>handleChange(event, 'name')}/>
+        <Input imageType={'masta'} placeholder={'Enter your name'} value={details.name} setValue={(event, value)=>handleChange(event, 'age')}/>
+        <Input imageType={'masta'} type={'radio'} placeholder={'Enter your name'} value={details.name} setValue={(event, value)=>handleChange(event, 'age')}/>
+        <Input imageType={'masta'} type={'checkbox'} placeholder={'Enter your name'} value={details.isHoly} setValue={(event, value)=>handleChange(event, 'isHoly')}/>
+
+        <h1>{details.name}</h1>
     </Content>
   </>}/>
 }
+
 
 const Content = styled.div`
     width: 100%;
