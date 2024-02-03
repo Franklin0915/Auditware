@@ -1,9 +1,32 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Wrapper from '../Components/Wrapper'
 import styled from 'styled-components'
 import Toggler from '../../../Common/Components/Toggler'
 
 function Settings() {
+
+    const [details, setDetails] = useState({
+        name: '',
+        age: '',
+        town: '',
+        isHoly: false
+    })
+
+    const handleChange = (event, name) => {
+        const {type, value, checked} = event.target;
+        setDetails(prev=>{
+            if(checked){
+                return {...details, [name]:checked}
+            }
+            return {...details, [name]:value}
+        })
+    }
+
+    useEffect(()=>{
+        console.log(details)
+    }, [details])
+
+
   return <Wrapper content={<>
     <Content className='flex v-flex a-i-s'>
         <section className="flex v-flex a-i-s " style={{marginBottom: '2rem'}}>
@@ -45,6 +68,7 @@ function Settings() {
     </Content>
   </>}/>
 }
+
 
 const Content = styled.div`
     width: 100%;

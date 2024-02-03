@@ -17,27 +17,13 @@ body{
     
 }
 .left-mid-block{
-    display: flex;
+    /* display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: center; */
 }
-.right {
-    width: 50%;
-    height: 100vh; /* Increase the height of the right div */
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 50%;
-  }
+
   
-  .right img {
-    width: 100%; /* Ensure the image doesn't exceed the width of the container */
-    max-height: 100%; /* Ensure the image doesn't exceed the height of the container */
-    object-fit:cover; /* Contain the image within the container without stretching */
-    padding: 10px;
-    border-radius: 24px;
-  }
+
 .name{
     margin: 0.5rem 0 1rem 90px;
     display: flex;
@@ -46,11 +32,11 @@ body{
     font-weight: 400;
 }
 .m-1{
-    margin: 0 0 1rem 0;
+    /* margin: 0 0 1rem 0;
     font-size: 40px;
     font-family:DM Sans;
     color:  #024744;
-    font-weight: 700;
+    font-weight: 700; */
 }
 
 .m-2{
@@ -112,14 +98,7 @@ body{
     flex-direction: column;
     align-items: center;
   }
-  #input-1,
-  #input-2 {
-    border: 1px solid #ccc;
-    width: 430px;
-    margin: 0.5rem 0; /* Adjusted margin */
-    padding: 10px;
-    border-radius: 12px;
-  }
+
   .s-o{
     margin:0 0 1rem 0;
   }
@@ -131,7 +110,7 @@ body{
     
   }
     
-  
+
   
   .first-input,
   .second-input {
@@ -149,13 +128,6 @@ body{
 }
  
 
-  
-  .first-input > label,
-  .second-input > label {
-    margin-bottom: -8px;
-    display: flex;
-    
-  }
   .forgot-password>a{
     display: flex;
     justify-content: flex-end;

@@ -66,10 +66,20 @@ const Container = styled.div`
     border-radius: 20px;
     transition: 700ms all;
 
+    @media only screen and (max-width: 1270px){
+        min-width: 500px;
+        max-width: 500px;
+    }
+    
+    @media (max-width: 1005px) {
+        display:none;
+    }
+
     .sideImage{
         width: 100%;
         height: 100%;
         object-fit: cover;
+
     }
     .carousel-content{
         position: absolute;
@@ -133,6 +143,8 @@ const Container = styled.div`
             font-size: 1.2rem;
         }
     }
-`
+    
+
+    `
 
 export default Carousel

@@ -14,6 +14,7 @@ import Profile from '../Pages/Main/Profile/Profile'
 import Settings from '../Pages/Main/Settings/Settings'
 import Workspaces from '../Pages/Main/Workspaces/Workspaces'
 import ResetPassword from '../Pages/Auth/resetPassword'
+import Payment from '../Pages/Auth/Payment'
 
 function Routers() {
   return (
@@ -36,6 +37,7 @@ function Routers() {
             <Route path='/auth-login' element={<SignIn />} />
             <Route path='/auth-register' element={<SignUp/>} />
             <Route path='/auth-reset-password' element={<ResetPassword/>}></Route>
+            <Route path='/auth-payment' element={<Payment/>}></Route>
         </Routes>
     </div>
   )
