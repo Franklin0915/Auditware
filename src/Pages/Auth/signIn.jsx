@@ -71,30 +71,34 @@ function SignIn() {
         </div>
       </LeftMidBlock>
       <form onSubmit={(e)=>skipLogin(e)}>
-          <InputContainer className="first-input">
-              <label htmlFor="input-1">Email</label>
-              <MainInput
-                type="email"
-                placeholder="Enter your email"
-                name="email"
-                value={login.email}
-                onChange={handleChange}
-                id="input-1"
-              />
+          <InputContainer >
+              <div>
+                <label htmlFor="input-1">Email</label>
+                <MainInput
+                  type="email"
+                  placeholder="Enter your email"
+                  name="email"
+                  value={login.email}
+                  onChange={handleChange}
+                  id="input-1"
+                />
+              </div>
           </InputContainer>
         <InputContainer className="second-input">
-          <label htmlFor="input-2">Password</label>
-          <MainInput
-            type={showPassword ? "text" : "password"} 
-            name="password"
-            placeholder="Enter your password"
-            value={login.password}
-            onChange={handleChange}
-            id="input-2"
-          />
+          <div className="inputLabel">
+            <label htmlFor="input-2">Password</label>
+            <MainInput
+              type={showPassword ? "text" : "password"} 
+              name="password"
+              placeholder="Enter your password"
+              value={login.password}
+              onChange={handleChange}
+              id="input-2"
+            />
+          </div>
           <i className={`fa-regular eye ${showPassword ? "fa-eye" : "fa-eye-slash"}`} onClick={togglePasswordVisibility}></i>
-          <aside className="forgot-password"><Link to="">Forgot password?</Link></aside>
         </InputContainer>
+        <aside className="forgot-password"><Link to="">Forgot password?</Link></aside>
         <aside className="login-button">
           <SubmitButton>Log in</SubmitButton>
         </aside>
@@ -213,6 +217,31 @@ export const AppleButton = styled.div`
   `
   ;
   
+
+
+export const InputContainer = styled.div`
+
+margin:0.5rem 0 0 0;
+display: flex;
+align-items: center;
+justify-content: space-between;
+position: relative;
+
+label {
+  display: flex; /* Set label to block display to position it above the input */
+  margin-bottom: -7px; /* Adjusted margin to create a small gap between label and input */
+}
+.fa-regular{
+  cursor: pointer;
+}
+
+@media (max-width: 414px) {
+  label {
+    margin-bottom: 5px; /* Adjusted margin for smaller screens */
+  }
+}
+`;
+
 export const MainInput = styled.input`
   border: 1px solid #ccc;
   width: 430px;
@@ -231,36 +260,6 @@ export const MainInput = styled.input`
   }
 `;
 
-
-export const InputContainer = styled.div`
-
-margin:0.5rem 0 0 0;
-display: flex;
-flex-direction: column;
-position: relative;
-
-label {
-  display: flex; /* Set label to block display to position it above the input */
-  margin-bottom: -7px; /* Adjusted margin to create a small gap between label and input */
-}
-.fa-regular{
-  position: absolute;
-  top: calc(50% - 0.8rem); 
-  right: 10px;
-  transform: translateY(-50%);
-  cursor: pointer;
-  
-  // margin:0 0 10px 0; 
-}
-
-@media (max-width: 414px) {
-  label {
-    margin-bottom: 5px; /* Adjusted margin for smaller screens */
-  }
-}
-  
-
-`;
 
 export const LeftMidBlock = styled.div`
 

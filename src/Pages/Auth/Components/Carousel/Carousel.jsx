@@ -59,6 +59,7 @@ function Carousel() {
 
 const Container = styled.div`
     min-width: 700px;
+    max-width: 700px;
     height: 100%;
     position: relative;
     overflow: hidden;

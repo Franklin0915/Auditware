@@ -110,7 +110,23 @@ body{
     
   }
     
+
   
+  .first-input,
+  .second-input {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+  .second-input > .fa-regular {
+    position: absolute;
+    top: calc(50% + 5px); /* Add 5px to the top position */
+    right: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    margin: 4px 0 0 0;
+}
+ 
 
   .forgot-password>a{
     display: flex;

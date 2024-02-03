@@ -21,6 +21,10 @@ code {
   transition: transform 0.3s ease;
 }
 
+.hidden{
+  display: none !important;
+}
+
 .scaleanimate {
   animation-name: scaleanimate;
   animation-duration: 400ms;
@@ -44,4 +48,3 @@ code {
     opacity: 0;
   }
 }
-
