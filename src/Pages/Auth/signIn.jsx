@@ -44,12 +44,14 @@ function SignIn() {
 
   return (
     <Wrapper  content={<>
-      <div className="left-mid-block">
-        <div className="m-1">
+
+      <LeftCover>
+      <LeftMidBlock className="left-mid-block">
+        <WelcomeBack className="m-1">
           <p>Welcome back!</p>
-        </div>
+        </WelcomeBack>
         <div className="m-2">
-          <small>Log in with your email to continue</small>
+          Log in with your email to continue
         </div>
         <div className="auth-buttons">
           <GoogleButton>
@@ -67,7 +69,7 @@ function SignIn() {
           <span className="or-text">or</span>
           <hr />
         </div>
-      </div>
+      </LeftMidBlock>
       <form onSubmit={(e)=>skipLogin(e)}>
           <InputContainer className="first-input">
               <label htmlFor="input-1">Email</label>
@@ -98,9 +100,29 @@ function SignIn() {
         </aside>
       </form>
       <div className="sign-up">Don't have an account?<Link to="">Sign up</Link></div>
+      
+
+
+    </LeftCover>
+      
     </>}/>
   );
 }
+
+
+export const LeftCover = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items:center;
+  margin: 2rem 0 0 0;
+  
+
+
+
+
+`
+;
 
 export const SubmitButton = styled.button`
    width:430px;
@@ -112,7 +134,7 @@ export const SubmitButton = styled.button`
    margin:0 0 20px 0;
 
    @media (max-width: 414px) {
-    width: 340px;
+    width: 310px;
     margin: 0 0 1rem 0;
   }
 
@@ -178,6 +200,18 @@ export const AppleButton = styled.div`
     }
   }
 `;
+  export const WelcomeBack = styled.div`
+  
+  margin: 0 0 1rem 0;
+  font-size: 40px;
+  font-family:DM Sans;
+  color:  #024744;
+  font-weight: 700;
+  
+
+  
+  `
+  ;
   
 export const MainInput = styled.input`
   border: 1px solid #ccc;
@@ -201,6 +235,9 @@ export const MainInput = styled.input`
 export const InputContainer = styled.div`
 
 margin:0.5rem 0 0 0;
+display: flex;
+flex-direction: column;
+position: relative;
 
 label {
   display: flex; /* Set label to block display to position it above the input */
@@ -224,6 +261,21 @@ label {
   
 
 `;
+
+export const LeftMidBlock = styled.div`
+
+display: flex;
+flex-direction: column;
+align-items: center;
+
+
+
+
+
+
+
+`
+;
 
 
 

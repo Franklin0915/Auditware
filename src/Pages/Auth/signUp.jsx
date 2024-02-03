@@ -10,6 +10,11 @@ import Wrapper from "./Components/Wrapper";
 import { brand } from "../../Assets";
 import { MainInput } from "./signIn";
 import { InputContainer } from "./signIn";
+import { LeftCover } from "./signIn";
+import { WelcomeBack } from "./signIn";
+import { LeftMidBlock } from "./signIn";
+
+
 
 function SignUp() {
   const [SignUp, setSignUp] = React.useState({ email: "", password: "", firstName: "", lastName: "" });
@@ -33,12 +38,13 @@ function SignUp() {
 
   return (
     <Wrapper content={<>
-          <div className="left-mid-block">
-            <div className="m-1">
+    <LeftCover>
+    <LeftMidBlock className="left-mid-block">
+            <WelcomeBack className="m-1">
               <p>Create an account</p>
-            </div>
+            </WelcomeBack>
             <div className="m-2">
-              <small>Welcome! Create an account to get started</small>
+              Welcome! Create an account to get started
             </div>
             <div className="auth-buttons">
               <GoogleButton>
@@ -54,7 +60,7 @@ function SignUp() {
               <span className="or-text">or</span>
               <hr />
             </div>
-          </div>
+          </LeftMidBlock>
           <form>
             <NameField className="name-field">
               <Name className="f-name">
@@ -94,7 +100,7 @@ function SignUp() {
             <InputContainer className="second-input">
         <label htmlFor="input-2">Create a password</label>
         <MainInput
-          type={showPassword ? "text" : "password"} // Use conditional rendering based on showPassword state
+          type={showPassword ? "text" : "password"} 
           name="password"
           placeholder="Enter your password"
           value={SignUp.password}
@@ -112,6 +118,9 @@ function SignUp() {
           <div className="terms">By signing up, you are confirming that you have read and agree with all
             <br/> our <a href="#">Terms and Conditions.</a>
           </div>
+
+    </LeftCover>
+    
     </>}/>
   );
 }
@@ -135,6 +144,16 @@ input{
 #first-name{
   margin: 0 30px 0 0;
 }
+
+@media (max-width: 414px) {
+ 
+  #first-name{
+    margin: 0 4px 10px 0;
+  }
+    
+}
+
+
 
 `;
 

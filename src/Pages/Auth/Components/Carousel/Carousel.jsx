@@ -64,6 +64,7 @@ const Container = styled.div`
     overflow: hidden;
     border-radius: 20px;
     transition: 700ms all;
+    
 
     .sideImage{
         width: 100%;

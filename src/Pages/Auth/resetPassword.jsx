@@ -2,6 +2,17 @@ import React from "react";
 import Wrapper from "./Components/Wrapper";
 import { SubmitButton } from "./emailVerification";
 import './reset.css'
+import { LeftCover } from "./signIn";
+import { LeftMidBlock } from "./signIn";
+import { InputContainer } from "./signIn";
+import { MainInput } from "./signIn";
+import { WelcomeBack } from "./signIn";
+
+
+
+
+
+
 
 function ResetPassword(){
     const [reset,setReset]=React.useState({password:""})
@@ -20,19 +31,20 @@ function ResetPassword(){
     
 
     return <Wrapper content={<>
-       <div className="left-mid-block">
-            <div className="m-1">
+    <LeftCover>
+    <LeftMidBlock className="left-mid-block">
+            <WelcomeBack className="m-1">
               <p>Reset password</p>
-            </div>
+            </WelcomeBack>
             <div className="m-2">
               Create a new password to log in to your<br/> account
             </div>
            
-          </div>
+          </LeftMidBlock>
           <form>
-        <div className="second-input s-o ">
+        <InputContainer className="second-input s-o ">
             <label htmlFor="input-2">New password</label>
-            <input
+            <MainInput
             type={showPassword ? "text" : "password"} // Use conditional rendering based on showPassword state
             name="password"
             placeholder="Enter your password"
@@ -42,11 +54,11 @@ function ResetPassword(){
             />
             <i className={`fa-regular ${showPassword ? "fa-eye" : "fa-eye-slash"}`} onClick={togglePasswordVisibility}></i>
       
-      </div>
+      </InputContainer>
 
-      <div className="second-input">
+      <InputContainer className="second-input">
             <label htmlFor="input-2">Confirm new password</label>
-            <input
+            <MainInput
             type={showPassword ? "text" : "password"} // Use conditional rendering based on showPassword state
             name="password"
             placeholder="Enter your password"
@@ -56,12 +68,15 @@ function ResetPassword(){
             />
             <i className={`fa-regular ${showPassword ? "fa-eye" : "fa-eye-slash"}`} onClick={togglePasswordVisibility}></i>
       
-      </div>
+      </InputContainer>
             <aside className="login-button">
               <SubmitButton>Reset password</SubmitButton>
             </aside>
           </form>
 
+
+    </LeftCover>
+       
     
     </>}/>
 }

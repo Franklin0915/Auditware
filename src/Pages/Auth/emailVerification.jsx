@@ -4,6 +4,11 @@ import './emailVerification.css';
 import slideImage from './assets/images/slide.png';
 import { useNavigate } from 'react-router-dom'; 
 import Wrapper from "./Components/Wrapper";
+import { LeftCover } from "./signIn";
+import { LeftMidBlock } from "./signIn";
+import { WelcomeBack } from "./signIn";
+import { InputContainer } from "./signIn";
+import { MainInput } from "./signIn";
 
 function EmailVerification(){
 
@@ -18,19 +23,20 @@ function EmailVerification(){
       }
 
     return  <Wrapper content={<>
-      <div className="left-mid-block">
-        <div className="m-1">
+      <LeftCover>
+      <LeftMidBlock className="left-mid-block">
+        <WelcomeBack className="m-1">
           <p>Email verification</p>
-        </div>
+        </WelcomeBack>
         <div className="m-2">
           enter the verification code sent to you email to<br/> continue
         </div>
       
-      </div>
+      </LeftMidBlock>
       <form>
-        <div className="first-input">
+        <InputContainer className="first-input">
           <label htmlFor="input-1">Verification code</label>
-          <input
+          <MainInput
             type="text"
             placeholder="xxxx-xxxx"
             name="verificationCode"
@@ -38,13 +44,15 @@ function EmailVerification(){
             onChange={handleChange}
             id="input-1"
           />
-        </div>
+        </InputContainer>
         
         <aside className="login-button">
           <SubmitButton onClick="" >Continue</SubmitButton>
         </aside>
       </form>
       <div className="v-code">Didn't receive a code?<a href="">Resend in 5:00</a></div>
+      </LeftCover>
+  
     </>}/>
   }
   
@@ -55,7 +63,18 @@ function EmailVerification(){
      border: 1px solid #ccc;
      color:white;
      background-color: #40ABA4;
-     margin:0 0 20px 0;
+     margom: 20px 0;
+
+     @media only screen and (max-width 777px){
+      width: 100%;
+      margin: 20px 5px;
+     }
+
+     @media (max-width: 414px) {
+      width: 340px;
+      margin: 0 0 1rem 0;
+    }
+
   `;
   
     
