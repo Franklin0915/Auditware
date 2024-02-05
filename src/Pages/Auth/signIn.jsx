@@ -33,20 +33,7 @@ function SignIn() {
 
   const handleSubmit = async(event)=>{
       event.preventDefault()
-    const url = "https://ezqyecsvnj.execute-api.us-east-1.amazonaws.com/Prod/login"
-    try{
-      const response = await axios.post(url,login)
-      
-      // console.log('response',response)
-      const token = response.data.token
-      sessionStorage.setItem('token',token);
-      console.log('token',token)
-   
-    }
-    catch(error){
-      console.log("error",error);
-    }
-
+    
 
   }
 
