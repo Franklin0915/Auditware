@@ -44,6 +44,7 @@ function SignIn() {
       session.set('token', JSON.stringify(res.data?.token))
       session.set('isLogin', true)
       setLoading(false)
+      navigate('/')
     }
     catch(error){
       setLoading(false)

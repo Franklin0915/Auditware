@@ -48,13 +48,12 @@ const Container = styled.div`
     margin: 0;
     width: 100%;
     height: fit-content;
-    border: 2px solid #02474335;
+    border: 1px solid #02474335;
     padding: 0.8rem;
     display: flex;
     flex-direction: column;
     border-radius: 15px;
     text-align: left;
-    box-shadow: 0 0 20px -3px lightgray;
     cursor: pointer;
     color: gray;
     
