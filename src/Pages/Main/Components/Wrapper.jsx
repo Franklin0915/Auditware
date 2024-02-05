@@ -3,7 +3,7 @@ import SideBar from './SideBar/SideBar'
 import Header from './Header'
 import styled from 'styled-components'
 
-function Wrapper({content, page, onlyIcons}) {
+function Wrapper({content, page, onlyIcons, hideHeader}) {
     const [smallSideBar, setSmallSideBar] = useState(false)
     useEffect(() => {
         setSmallSideBar(onlyIcons)
@@ -24,8 +24,8 @@ function Wrapper({content, page, onlyIcons}) {
         <Container className='flex'>
             <SideBar onlyIcons={smallSideBar}/>
             <MainContent className="">
-                <Header page={page}/>
-                <Content className="">
+                <Header hide={hideHeader} page={page}/>
+                <Content className="" style={{height: `${hideHeader ? '100%':'calc(100%-80px'}`, padding: `${hideHeader ? '0':'0 1.5rem'}`}}>
                     {content}
                 </Content>
             </MainContent>
@@ -47,9 +47,7 @@ const MainContent = styled.section`
     overflow-y: auto !important;
 `
 const Content = styled.div`
-    padding: 0 1.5rem;
     width: 100%;
-    height: calc(100%-80px);
     flex-grow: 1;
 `
 
