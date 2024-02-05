@@ -5,11 +5,12 @@ import { colors } from '../../../Setup/colors'
 import useMain from '../../../Common/Hooks/useMain'
 import { GridContent } from '../StyledComponents'
 import Card from '../Components/Card/Card'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import AddWorkspace from './AddWorkspace'
 import ModalWrapper from '../Components/ModalAlerts/ModalWrapper'
 
 function Workspaces() {
+    const navigate = useNavigate()
     const {dropStatus, dropName, offDrop, setDrop, modalContent, modalPage, modalTitle, openModal, modalStatus, closeModal} = useMain()
     const location = useLocation()
     const data = [1,1,1,1,1]
@@ -43,7 +44,7 @@ function Workspaces() {
                         {
                             dropName === `List-${idx}` && <GridContent style={{margin: '1rem 0'}} className='animatefromleft'>
                                 {
-                                    data.map((card, index)=>index<3 ? <Card key={`ListCard-${index}`}/>: <div key={`ListCard-${index}`}/>)
+                                    data.map((card, index)=>index<3 ? <Card onClick={()=>navigate(`/projects/${index}`)} key={`ListCard-${index}`}/>: <div key={`ListCard-${index}`}/>)
                                 }
                             </GridContent>
                         }
