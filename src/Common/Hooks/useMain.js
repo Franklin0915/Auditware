@@ -1,6 +1,7 @@
 import { useState } from 'react'
 
 function useMain() {
+    const [isLoading, setLoading] = useState(false)
     const [state, setState] = useState({
         dropDown:{
             status: false,
@@ -13,7 +14,10 @@ function useMain() {
             title: ''
         }
     })
+
     return {
+        setLoading: (val)=>setLoading(val),
+        isLoading,
         dropStatus: state.dropDown.status,
         dropName: state.dropDown.name,
         offDrop: ()=>setState(prev=>{

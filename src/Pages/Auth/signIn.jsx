@@ -12,16 +12,20 @@ import { brand } from "../../Assets";
 import session from "../../Store/Session";
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import axiosInstance from "../../Service/axios";
+import useMain from "../../Common/Hooks/useMain";
+import Loading from "../../Common/Components/Loading";
 
 
 function SignIn() {
-  const [login, setLogin] = React.useState({ username: "", password: "" });
+  const {isLoading, setLoading} = useMain()
+  const [detail, setDetail] = React.useState({ username: "admin", password: "admin" });
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = React.useState(false);
 
   function handleChange(event) {
     const { name, value, type, checked } = event.target;
-    setLogin((prevForm) => ({
+    setDetail((prevForm) => ({
       ...prevForm,
       [name]: type === "checkbox" ? checked : value,
     }));
@@ -32,13 +36,20 @@ function SignIn() {
   }
 
   const handleSubmit = async(event)=>{
-      event.preventDefault()
-    
-
+    event.preventDefault()
+    setLoading(true)
+    try{
+      const res = await axiosInstance.post(`/login`, detail);
+      console.log(res)
+      session.set('token', JSON.stringify(res.data?.token))
+      session.set('isLogin', true)
+      setLoading(false)
+    }
+    catch(error){
+      setLoading(false)
+      console.log(error)
+    }
   }
-
-  
-
 
   const skipLogin = (e) => {
     e.preventDefault()
@@ -50,7 +61,7 @@ function SignIn() {
 
   return (
     <Wrapper  content={<>
-
+      <Loading status={isLoading}/>
       <LeftCover>
       <LeftMidBlock className="left-mid-block">
         <WelcomeBack className="m-1">
@@ -84,7 +95,7 @@ function SignIn() {
                   type="text"
                   placeholder="Enter your email"
                   name="username"
-                  value={login.username}
+                  value={detail.username}
                   onChange={handleChange}
                   id="input-1"
                 />
@@ -97,7 +108,7 @@ function SignIn() {
               type={showPassword ? "text" : "password"} 
               name="password"
               placeholder="Enter your password"
-              value={login.password}
+              value={detail.password}
               onChange={handleChange}
               id="input-2"
             />
