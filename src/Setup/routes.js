@@ -21,8 +21,8 @@ function Routers() {
     <div className="w-screen h-screen">
         <Routes>
             {/* Main Pages Routes .................. */}
-            <Route path='/' element={<Private><Dashboard/></Private>}/>
-            <Route path='/projects' element={<Private><Projects/></Private>}/>
+            <Route path='Dashboard' element={<Dashboard/>}/>
+            <Route path='/projects' element={<Projects/>}/>
             <Route path='/recents' element={<Private><Recents/></Private>}/>
             <Route path='/members' element={<Private><Members/></Private>}/>
             <Route path='/workspaces' element={<Private><Workspaces/></Private>}/>
