@@ -11,10 +11,11 @@ import Wrapper from "./Components/Wrapper";
 import { brand } from "../../Assets";
 import session from "../../Store/Session";
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 
 function SignIn() {
-  const [login, setLogin] = React.useState({ email: "", password: "" });
+  const [login, setLogin] = React.useState({ username: "", password: "" });
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = React.useState(false);
 
@@ -30,9 +31,27 @@ function SignIn() {
     setShowPassword((prevShowPassword) => !prevShowPassword);
   }
 
-  function toSignUp(){
-    navigate('/signup');
+  const handleSubmit = async(event)=>{
+      event.preventDefault()
+    const url = "https://ezqyecsvnj.execute-api.us-east-1.amazonaws.com/Prod/login"
+    try{
+      const response = await axios.post(url,login)
+      
+      // console.log('response',response)
+      const token = response.data.token
+      sessionStorage.setItem('token',token);
+      console.log('token',token)
+   
+    }
+    catch(error){
+      console.log("error",error);
+    }
+
+
   }
+
+  
+
 
   const skipLogin = (e) => {
     e.preventDefault()
@@ -70,15 +89,15 @@ function SignIn() {
           <hr />
         </div>
       </LeftMidBlock>
-      <form onSubmit={(e)=>skipLogin(e)}>
+      <form onSubmit={(e)=>handleSubmit(e)}>
           <InputContainer >
               <div>
                 <label htmlFor="input-1">Email</label>
                 <MainInput
-                  type="email"
+                  type="text"
                   placeholder="Enter your email"
-                  name="email"
-                  value={login.email}
+                  name="username"
+                  value={login.username}
                   onChange={handleChange}
                   id="input-1"
                 />
