@@ -91,9 +91,7 @@ const Container = styled.div`
             to bottom,
             rgba(0, 0, 0, 0.29), /* #00000058 with 50% reduced darkness */
             rgba(0, 0, 0, 0.70)  /* #000000e0 with 50% reduced darkness */
-          );
-          
-          
+        );
         /* background-color: #00000084; */
         display: flex;
         flex-direction: column;
