@@ -3,10 +3,10 @@ import styled from 'styled-components'
 import { avatar } from '../../../../Assets'
 import { colors } from '../../../../Setup/colors'
 
-function Card() {
+function Card({onClick}) {
     const members = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
   return (
-    <Container>
+    <Container onClick={()=>onClick()}>
         <div className="flex j-c-b">
             <b style={{color: 'gray'}}>May 2023 Audit</b>
             <b style={{color: colors.theme}}>100%</b>

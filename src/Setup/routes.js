@@ -15,14 +15,16 @@ import Settings from '../Pages/Main/Settings/Settings'
 import Workspaces from '../Pages/Main/Workspaces/Workspaces'
 import ResetPassword from '../Pages/Auth/resetPassword'
 import Payment from '../Pages/Auth/Payment'
+import OpenProject from '../Pages/Main/OpenProject/OpenProject'
 
 function Routers() {
   return (
     <div className="w-screen h-screen">
         <Routes>
             {/* Main Pages Routes .................. */}
-            <Route path='Dashboard' element={<Dashboard/>}/>
-            <Route path='/projects' element={<Projects/>}/>
+            <Route path='/' element={<Private><Dashboard/></Private>}/>
+            <Route path='/projects' element={<Private><Projects/></Private>}/>
+            <Route path='/projects/:id' element={<Private><OpenProject/></Private>}/>
             <Route path='/recents' element={<Private><Recents/></Private>}/>
             <Route path='/members' element={<Private><Members/></Private>}/>
             <Route path='/workspaces' element={<Private><Workspaces/></Private>}/>

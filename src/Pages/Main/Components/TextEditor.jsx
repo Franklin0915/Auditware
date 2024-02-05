@@ -36,13 +36,13 @@ function TextEditor(){
     return(
     <EditorContainer>
       <ReactQuill
+        style={{border: 'none', height: '100%'}}
         value={value}
         modules={modules}
         formats={formats}
         onChange={handleChange}
         placeholder="Type here.."
-        
-        />
+      />
 
     </EditorContainer>
   
@@ -51,6 +51,6 @@ function TextEditor(){
 
 
 const EditorContainer = styled.div`
-
+  
 `;
 export default TextEditor

@@ -4,7 +4,7 @@ import TextSpace from './TextSpace'
 
 function OpenProject() {
     return (
-        <Wrapper content={<TextSpace/>}/>
+        <Wrapper onlyIcons hideHeader content={<TextSpace/>}/>
     )
 }
 
