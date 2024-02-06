@@ -3,9 +3,9 @@ import styled from 'styled-components'
 import { doc, pdf } from '../../../../Assets'
 import { colors } from '../../../../Setup/colors'
 
-function FileCard({name, size, type}) {
+function FileCard({name, size, type, style}) {
   return (
-    <Container className='flex'>
+    <Container className='flex' style={{...style}}>
         <img src={type === 'doc'?doc:pdf} alt="" />
         <div className="details flex v-flex a-i-s ">
             <p>{name}</p>
