@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import Wrapper from "../Components/Wrapper";
 import { GridContent } from "../StyledComponents";
 import TextEditor from "../Components/TextEditor";
+import Card from "../Components/Card/Card";
 
 
 function Dashboard(){
@@ -13,6 +14,7 @@ function Dashboard(){
                 <h1 className="text-2xl font-bold">Dashboard</h1>
                 <TopPart>
                     <GridContent>
+                        <Card/>
                         
                     </GridContent>
                 </TopPart>
