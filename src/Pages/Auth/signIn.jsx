@@ -41,10 +41,12 @@ function SignIn() {
     try{
       const res = await axiosInstance.post(`/login`, detail);
       console.log(res)
-      session.set('token', JSON.stringify(res.data?.token))
-      session.set('isLogin', true)
-      setLoading(false)
-      navigate('/')
+      session.set('token', res.data?.token)
+      session.set('isLogin', 'true')
+      setTimeout(() => {
+        setLoading(false)
+        window.location.href = "/"
+      }, 500);
     }
     catch(error){
       setLoading(false)

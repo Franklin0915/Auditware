@@ -7,11 +7,10 @@ const set = (name, value) => {
             sessionStorage.setItem(name, value);
             break;
         case 'object':
-            // JSON.stringify is used to convert the object to a string
             sessionStorage.setItem(name, JSON.stringify(value));
             break;
-        // Add more cases for other types as needed
         default:
+            console.log(name, value)
             throw new Error('Unsupported data type');
         }
     } catch (error) {
