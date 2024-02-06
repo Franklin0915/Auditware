@@ -10,6 +10,7 @@ import FileCard from '../Files/Includes/FileCard'
 function TextSpace() {
     const {dropName, dropStatus, setDrop, offDrop} = useMain()
     const [tab, setTab] = useState('Preparation notes')
+    const [tab2, setTab2] = useState('Resources')
     const avatarData = [1,1,1]
 
     return (
@@ -83,8 +84,8 @@ function TextSpace() {
                 </div>
                 <aside>
                     <section className='tab flex mb-1 mt-1'>
-                        <div onClick={()=>setTab('Resources')} className={`tabItem ${tab === 'Resources' ? 'active' : ''}`}>Resources</div>
-                        <div onClick={()=>setTab('External Refences')} className={`tabItem ${tab === 'External Refences' ? 'active' : ''}`}>External Refences</div>
+                        <div onClick={()=>setTab2('Resources')} className={`tabItem ${tab2 === 'Resources' ? 'active' : ''}`}>Resources</div>
+                        <div onClick={()=>setTab2('External Refences')} className={`tabItem ${tab2 === 'External Refences' ? 'active' : ''}`}>External Refences</div>
                     </section>
                     <FileCard type={'doc'} name={'Sample Template.docx'} size={'20mb'} style={{margin: '0.5rem 0'}}/>
                     <FileCard type={'pdf'} name={'Sample Template.docx'} size={'20mb'} style={{margin: '0.5rem 0'}}/>
