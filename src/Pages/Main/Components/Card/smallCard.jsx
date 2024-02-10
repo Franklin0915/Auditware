@@ -4,55 +4,22 @@ import Forward from '../../../Auth/assets/images/Forward.svg'
 import { avatar } from "../../../../Assets";
 
 
-function BigCard(){
+function SmallCard(){
     const members = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
     const[collapse,setColl]=React.useState({Columns:false})
     return(
         <Container>
             <Columns>
-                <aside>Recent Projects</aside>
+                <aside>Members</aside>
                 <Pointer
                 >See all <img height='10px' src={Forward}/>
                 </Pointer>
             </Columns>
             <Columns>
-                <aside>2024 First Quater Financial Audit</aside> <Vr></Vr>
-                <aside>DSR Audit Tax Consultancy</aside> 
-                <aside></aside>
-                {
-                        members.map((mem, idx)=>{
-                            if(idx<3){
-                                return <div key={'mem'+idx} className="profileImg rounded-full overflow-hidden bg-gray-300 shadow">
-                                        <img  src={avatar} alt="" className=''/>
-                                    </div>
-                            }
-                            return <></>
-                        })
-                    }
-            </Columns>
-            <Columns>
-                <aside>January Annual Audit</aside> <Vr></Vr>
-                <aside>Delorem Ghana Limited</aside> 
-                <aside></aside>
-                {
-                        members.map((mem, idx)=>{
-                            if(idx<2){
-                                return <div key={'mem'+idx} className="profileImg rounded-full overflow-hidden bg-gray-300 shadow">
-                                        <img  src={avatar} alt="" className=''/>
-                                    </div>
-                            }
-                            return <></>
-                        })
-                    }
-            </Columns>
 
-            <Columns>
-                <aside>May 2023 Audit</aside> <Vr></Vr>
-                <aside>Elite IT Consultancy</aside> 
-                <aside></aside>
-                {
+            {
                         members.map((mem, idx)=>{
-                            if(idx<3){
+                            if(idx<1){
                                 return <div key={'mem'+idx} className="profileImg rounded-full overflow-hidden bg-gray-300 shadow">
                                         <img  src={avatar} alt="" className=''/>
                                     </div>
@@ -60,14 +27,33 @@ function BigCard(){
                             return <></>
                         })
                     }
+                <aside>Michael Boateng</aside> 
+                <aside>2 Workspaces, 3 Projects</aside> 
+                
+              
             </Columns>
             <Columns>
-                <aside>2022 End of Year Audit</aside> <Vr></Vr>
-                <aside>Ipsum Farms Ghana</aside> 
-                <aside></aside>
-                {
+
+{
+            members.map((mem, idx)=>{
+                if(idx<1){
+                    return <div key={'mem'+idx} className="profileImg rounded-full overflow-hidden bg-gray-300 shadow">
+                            <img  src={avatar} alt="" className=''/>
+                        </div>
+                }
+                return <></>
+            })
+        }
+    <aside>Sedem Dzodzi</aside> 
+    <aside>1 Workspace, 1 Project</aside> 
+    
+  
+        </Columns>
+        <Columns>
+
+                    {
                         members.map((mem, idx)=>{
-                            if(idx<3){
+                            if(idx<1){
                                 return <div key={'mem'+idx} className="profileImg rounded-full overflow-hidden bg-gray-300 shadow">
                                         <img  src={avatar} alt="" className=''/>
                                     </div>
@@ -75,7 +61,34 @@ function BigCard(){
                             return <></>
                         })
                     }
-            </Columns>
+                <aside>Lauren Mills</aside> 
+                <aside>2 Workspaces, 2 Projects</aside> 
+    
+  
+        </Columns>
+
+        <Columns>
+
+                {
+                    members.map((mem, idx)=>{
+                        if(idx<1){
+                            return <div key={'mem'+idx} className="profileImg rounded-full overflow-hidden bg-gray-300 shadow">
+                                    <img  src={avatar} alt="" className=''/>
+                                </div>
+                        }
+                        return <></>
+                    })
+                }
+                <aside>Joseph Manu</aside> 
+                <aside>1 Workspaces, 3 Projects</aside> 
+
+
+</Columns>
+
+        
+
+         
+         
 
         </Container>
     )
@@ -83,8 +96,8 @@ function BigCard(){
 
 }
 const Container = styled.div`
-margin: 0 2rem 0 0;
-width: 800px;
+margin: 0;
+width: 422px;
 height: fit-content;
 border: 1px solid #02474335;
 padding: 0.8rem;
@@ -142,4 +155,4 @@ const Pointer = styled.div`
     margin:0 0 0 4rem;
 
 `;
-export default BigCard
+export default SmallCard

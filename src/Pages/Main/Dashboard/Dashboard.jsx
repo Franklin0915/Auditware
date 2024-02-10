@@ -6,18 +6,23 @@ import { GridContent } from "../StyledComponents";
 import TextEditor from "../Components/TextEditor";
 import Card from "../Components/Card/Card";
 import BigCard from "../Components/Card/BigCard";
+import SmallCard from "../Components/Card/smallCard";
 
 
-function Dashboard(){
+function Dashboard(props){
+    const customStyle = {
+        width:"300px",
+        display:"none",
+    }
     return(
         <Wrapper page={'Dashboard'} content={<>
             <MainContainer style={{color: colors.main}}>
-                <h1 className="text-2xl font-bold">Dashboard</h1>
+                
                 <TopPart>
-                    <GridContent>
-                       <BigCard/>
+                       <BigCard />
+                      <SmallCard/>
                         
-                    </GridContent>
+                    
                 </TopPart>
             </MainContainer>
         </>}/>
@@ -29,7 +34,8 @@ export const MainContainer = styled.div`
     width: 100%;
     height: 100vh;
     display: flex;
-    align-items: flex-start;
+   
+    
 
     #name{
         border: 1px solid red;
@@ -44,7 +50,8 @@ export const MainContainer = styled.div`
 `
 const TopPart = styled.div`
     display:flex;
-    align-items:center;
+    justifiy-content:space-between;
+    
 
 
 `
