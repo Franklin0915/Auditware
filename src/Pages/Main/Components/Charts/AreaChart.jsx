@@ -1,14 +1,23 @@
 import { useEffect } from 'react';
-import { Chart, registerables } from 'chart.js';
-
-Chart.register(...registerables);
+import { Chart } from 'chart.js/auto';
 
 const SmoothAreaChartComponent = () => {
   let smoothAreaChart;
 
   useEffect(() => {
+    // Cleanup function
+    const cleanup = () => {
+      if (smoothAreaChart) {
+        smoothAreaChart.destroy();
+      }
+    };
+
+    // Create the smooth area chart
     createSmoothAreaChart();
-  }, []);
+
+    // Cleanup when the component is unmounted or before creating a new chart
+    return cleanup;
+  }, []); // Empty dependency array to run only once on mount
 
   const createSmoothAreaChart = () => {
     const canvas = document.getElementById('smoothAreaChart');
@@ -47,7 +56,7 @@ const SmoothAreaChartComponent = () => {
     }
   };
 
-  return <canvas id="smoothAreaChart" width="400" height="100"></canvas>;
+  return <canvas id="smoothAreaChart" ></canvas>;
 };
 
 export default SmoothAreaChartComponent;

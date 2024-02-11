@@ -136,7 +136,7 @@ const Columns =styled.div`
 
 
 ;
-const Pointer = styled.div`
+export const Pointer = styled.div`
     display:flex;
     align-items:center;
     margin:0 0 0 4rem;
