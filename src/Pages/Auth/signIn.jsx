@@ -42,11 +42,10 @@ function SignIn() {
       const res = await axiosInstance.post(`/login`, detail);
       console.log(res)
       session.set('token', res.data?.token)
-      // session.set('isLogin', 'true')
-      navigate('/dashboard');
+      session.set('isLogin', 'true')
       setTimeout(() => {
         setLoading(false)
-        
+        navigate('/dashboard');
       }, 500);
     }
     catch(error){
