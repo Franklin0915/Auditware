@@ -1,18 +1,18 @@
-import React, { useEffect } from 'react'
-import session from '../Store/Session'
-import { useNavigate } from 'react-router-dom'
+import React, { useEffect } from 'react';
+import session from '../Store/Session';
+import { useNavigate } from 'react-router-dom';
 
-const isLogin = session.get('isLogin')
-function ProtectedRoute({children}) {
-    const navigate = useNavigate()
-    useEffect(()=>{
-        if(!isLogin){
-            navigate('/auth-login')
-        }
-    }, [navigate])
-    
-    return <>{children}</>
+function ProtectedRoute({ children }) {
+  const navigate = useNavigate();
+  const isLogin = session.get('isLogin');
 
+  useEffect(() => {
+    if (!isLogin) {
+      navigate('/auth-login');
+    }
+  }, [isLogin]); // Include isLogin in the dependency array
+
+  return children; // Return children directly
 }
 
-export default ProtectedRoute
+export default ProtectedRoute;
