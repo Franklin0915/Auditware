@@ -24,6 +24,11 @@ const SmoothAreaChartComponent = () => {
     const ctx = canvas.getContext('2d');
 
     if (ctx) {
+      // Create a linear gradient
+      const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
+      gradient.addColorStop(0, '#FF4E22'); // Start color
+      gradient.addColorStop(1, '#349FA6'); // End color
+
       smoothAreaChart = new Chart(ctx, {
         type: 'line',
         data: {
@@ -33,7 +38,7 @@ const SmoothAreaChartComponent = () => {
               label: 'Smooth Area Chart',
               data: [10, 20, 15, 25, 18, 30, 22],
               borderColor: '#EEC5A6',
-              backgroundColor: '#EEC5A6',
+              backgroundColor: gradient, // Use the gradient as the background color
               tension: 0.4,
               fill: true,
             },
@@ -56,7 +61,7 @@ const SmoothAreaChartComponent = () => {
     }
   };
 
-  return <canvas id="smoothAreaChart" ></canvas>;
+  return <canvas id="smoothAreaChart"></canvas>;
 };
 
 export default SmoothAreaChartComponent;

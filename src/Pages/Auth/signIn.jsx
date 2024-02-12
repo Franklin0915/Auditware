@@ -19,7 +19,7 @@ import Loading from "../../Common/Components/Loading";
 
 function SignIn() {
   const {isLoading, setLoading} = useMain()
-  const [detail, setDetail] = React.useState({ username: "admin", password: "admin" });
+  const [detail, setDetail] = React.useState({ email_address: "admin@gmail.com", password: "password" });
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = React.useState(false);
 
@@ -42,10 +42,11 @@ function SignIn() {
       const res = await axiosInstance.post(`/login`, detail);
       console.log(res)
       session.set('token', res.data?.token)
-      session.set('isLogin', 'true')
+      // session.set('isLogin', 'true')
+      navigate('/dashboard');
       setTimeout(() => {
         setLoading(false)
-        window.location.href = "/"
+        
       }, 500);
     }
     catch(error){
@@ -58,7 +59,7 @@ function SignIn() {
     e.preventDefault()
     session.set('isLogin', true)
     setTimeout(() => {
-      navigate('/')
+      navigate('/dashboard')
     }, 500);
   }
 
@@ -95,10 +96,10 @@ function SignIn() {
               <div>
                 <label htmlFor="input-1">Email</label>
                 <MainInput
-                  type="text"
+                  type="email"
                   placeholder="Enter your email"
-                  name="username"
-                  value={detail.username}
+                  name="email"
+                  value={detail.email_address}
                   onChange={handleChange}
                   id="input-1"
                 />
