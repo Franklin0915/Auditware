@@ -22,6 +22,7 @@ function Routers() {
     <div className="w-screen h-screen">
         <Routes>
             {/* Main Pages Routes .................. */}
+            <Route path='/' element={<Private><Dashboard/></Private>}/>
             <Route path='/dashboard' element={<Private><Dashboard/></Private>}/>
             <Route path='/projects' element={<Private><Projects/></Private>}/>
             <Route path='/projects/:id' element={<Private><OpenProject/></Private>}/>
