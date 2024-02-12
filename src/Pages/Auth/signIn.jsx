@@ -11,16 +11,21 @@ import Wrapper from "./Components/Wrapper";
 import { brand } from "../../Assets";
 import session from "../../Store/Session";
 import { Link } from 'react-router-dom';
+import axios from 'axios';
+import axiosInstance from "../../Service/axios";
+import useMain from "../../Common/Hooks/useMain";
+import Loading from "../../Common/Components/Loading";
 
 
 function SignIn() {
-  const [login, setLogin] = React.useState({ email: "", password: "" });
+  const {isLoading, setLoading} = useMain()
+  const [detail, setDetail] = React.useState({ email_address: "admin@gmail.com", password: "password" });
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = React.useState(false);
 
   function handleChange(event) {
     const { name, value, type, checked } = event.target;
-    setLogin((prevForm) => ({
+    setDetail((prevForm) => ({
       ...prevForm,
       [name]: type === "checkbox" ? checked : value,
     }));
@@ -30,21 +35,36 @@ function SignIn() {
     setShowPassword((prevShowPassword) => !prevShowPassword);
   }
 
-  function toSignUp(){
-    navigate('/signup');
+  const handleSubmit = async(event)=>{
+    event.preventDefault()
+    setLoading(true)
+    try{
+      const res = await axiosInstance.post(`/login`, detail);
+      console.log(res)
+      session.set('token', res.data?.token)
+      session.set('isLogin', 'true')
+      setTimeout(() => {
+        setLoading(false)
+        navigate('/dashboard');
+      }, 500);
+    }
+    catch(error){
+      setLoading(false)
+      console.log(error)
+    }
   }
 
   const skipLogin = (e) => {
     e.preventDefault()
     session.set('isLogin', true)
     setTimeout(() => {
-      navigate('/')
+      navigate('/dashboard')
     }, 500);
   }
 
   return (
     <Wrapper  content={<>
-
+      <Loading status={isLoading}/>
       <LeftCover>
       <LeftMidBlock className="left-mid-block">
         <WelcomeBack className="m-1">
@@ -70,7 +90,7 @@ function SignIn() {
           <hr />
         </div>
       </LeftMidBlock>
-      <form onSubmit={(e)=>skipLogin(e)}>
+      <form onSubmit={(e)=>handleSubmit(e)}>
           <InputContainer >
               <div>
                 <label htmlFor="input-1">Email</label>
@@ -78,7 +98,7 @@ function SignIn() {
                   type="email"
                   placeholder="Enter your email"
                   name="email"
-                  value={login.email}
+                  value={detail.email_address}
                   onChange={handleChange}
                   id="input-1"
                 />
@@ -91,7 +111,7 @@ function SignIn() {
               type={showPassword ? "text" : "password"} 
               name="password"
               placeholder="Enter your password"
-              value={login.password}
+              value={detail.password}
               onChange={handleChange}
               id="input-2"
             />

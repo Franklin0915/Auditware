@@ -4,7 +4,7 @@ import ProjectListings from './Includes/ProjectListings'
 
 function Projects() {
   return (
-    <Wrapper page={'Profiles'} content={<>
+    <Wrapper page={'Projects'} content={<>
         <ProjectListings/>
     </>}/>
   )
