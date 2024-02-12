@@ -5,9 +5,7 @@ import styled from "styled-components";
 
 function TextEditor(){
 
-   const[value,setValue]=React.useState(''); 
-
-
+   const [value, setValue] = React.useState(''); 
 
    const modules = {
     toolbar: [
@@ -16,6 +14,7 @@ function TextEditor(){
       [{ 'list': 'ordered' }, { 'list': 'bullet' }],
       ['link', 'image'],
       ['clean'],
+      [{ 'customLink': handleInsertLink }],
     ],
   };
 
@@ -26,31 +25,38 @@ function TextEditor(){
     'link', 'image',
   ];
 
+  // Function to handle inserting a link with custom behavior
+  const handleInsertLink = () => {
+    const url = prompt("Enter the URL");
+
+    // Perform custom logic based on the URL (open local file, etc.)
+    if (url) {
+      const link = `<a href="${url}" target="_blank">${url}</a>`;
+      setValue(value + link);
+    }
+  };
+
   const handleChange = (content) => {
-    
+    setValue(content);
     console.log(content);
   };
 
-    
-
-    return(
+  return (
     <EditorContainer>
       <ReactQuill
-        style={{border: 'none', height: '100%'}}
+        style={{ border: 'none', height: '100%' }}
         value={value}
         modules={modules}
         formats={formats}
         onChange={handleChange}
         placeholder="Type here.."
       />
-
     </EditorContainer>
-  
-    )
+  );
 }
 
-
 const EditorContainer = styled.div`
-  
+  height: 500px; /* Set the desired height */
 `;
-export default TextEditor
+
+export default TextEditor;
