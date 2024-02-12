@@ -10,10 +10,14 @@ import { WelcomeBack } from "./signIn";
 import { InputContainer } from "./signIn";
 import { MainInput } from "./signIn";
 import PaymentInput from "./Components/InputField";
+import { useNavigate } from 'react-router-dom'; 
+import axiosInstance from "../../Service/axios";
+
 
 function ForgetPassword(){
 
-    const[email,setEmail]=React.useState({email:""})
+    const[email,setEmail]=React.useState({email_address:"oppongnkrumahdavid@yahoo.com"})
+    const navigate = useNavigate();
 
     function handleChange(event) {
         const { name, value, type, checked } = event.target;
@@ -21,6 +25,25 @@ function ForgetPassword(){
           ...prevForm,
           [name]: type === "checkbox" ? checked : value,
         }));
+      }
+
+      const handleSubmit = async(event)=>{
+        event.preventDefault()
+        // setLoading(true)
+        try{
+          const res = await axiosInstance.post(`/reset_password`, email);
+          console.log(res)
+         
+          
+          // setTimeout(() => {
+          //   setLoading(false)
+            
+          // }, 500);
+        }
+        catch(error){
+          // setLoading(false)
+          console.log(error)
+        }
       }
 
     return <Wrapper content={<>
@@ -34,14 +57,14 @@ function ForgetPassword(){
         </div>
         
       </LeftMidBlock>
-      <form>
+      <form onSubmit={handleSubmit}>
         <InputContainer className="first-input">
           <label htmlFor="input-1">Email</label>
           <MainInput
             type="text"
             placeholder="Enter your email"
             name="email"
-            value={email.email}
+            value={email.email_address}
             onChange={handleChange}
             id="input-1"
           />

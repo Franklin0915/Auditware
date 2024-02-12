@@ -119,7 +119,7 @@ function SignIn() {
           </div>
           <i className={`fa-regular eye ${showPassword ? "fa-eye" : "fa-eye-slash"}`} onClick={togglePasswordVisibility}></i>
         </InputContainer>
-        <aside className="forgot-password"><Link to="">Forgot password?</Link></aside>
+        <aside className="forgot-password"><Link to="/auth-forget-password">Forgot password?</Link></aside>
         <aside className="login-button">
           <SubmitButton>Log in</SubmitButton>
         </aside>
