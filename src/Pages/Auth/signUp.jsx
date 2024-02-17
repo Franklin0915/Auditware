@@ -86,30 +86,33 @@ function SignUp() {
                 />
               </Name>
             </NameField>
-            <InputContainer className="first-input">
-              <label htmlFor="input-1">Email</label>
-              <MainInput
-                type="email"
-                placeholder="Enter your email"
-                name="email"
-                value={SignUp.email}
-                onChange={handleChange}
-                id="input-1"
-              />
-            </InputContainer>
-            <InputContainer className="second-input">
-        <label htmlFor="input-2">Create a password</label>
-        <MainInput
-          type={showPassword ? "text" : "password"} 
-          name="password"
-          placeholder="Enter your password"
-          value={SignUp.password}
-          onChange={handleChange}
-          id="input-2"
-        />
-        <i className={`fa-regular ${showPassword ? "fa-eye" : "fa-eye-slash"}`} onClick={togglePasswordVisibility}></i>
-      
-      </InputContainer>
+            <InputContainer >
+              <div>
+                <label htmlFor="input-1">Email</label>
+                <MainInput
+                  type="email"
+                  placeholder="Enter your email"
+                  name="email"
+                  value={SignUp.email}
+                  onChange={handleChange}
+                  id="input-1"
+                />
+              </div>
+          </InputContainer>
+          <InputContainer className="second-input">
+          <div className="inputLabel">
+            <label htmlFor="input-2">Password</label>
+            <MainInput
+              type={showPassword ? "text" : "password"} 
+              name="password"
+              placeholder="Enter your password"
+              value={SignUp.password}
+              onChange={handleChange}
+              id="input-2"
+            />
+          </div>
+          <i className={`fa-regular eye ${showPassword ? "fa-eye" : "fa-eye-slash"}`} onClick={togglePasswordVisibility}></i>
+        </InputContainer>
             <aside className="login-button">
               <SubmitButton>Sign up</SubmitButton>
             </aside>
@@ -133,6 +136,8 @@ flex-direction: column;
 
 label{
   display: flex;
+  justify-content:flex-start;
+  
 }
 
 input{
