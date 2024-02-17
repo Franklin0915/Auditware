@@ -9,10 +9,13 @@ import { LeftMidBlock } from "./signIn";
 import { WelcomeBack } from "./signIn";
 import { InputContainer } from "./signIn";
 import { MainInput } from "./signIn";
+import axiosInstance from "../../Service/axios";
+
 
 function EmailVerification(){
 
     const [Code, setCode] = React.useState({ verificationCode: "" });
+    const navigate = useNavigate();
 
     function handleChange(event) {
         const { name, value, type, checked } = event.target;
@@ -21,6 +24,27 @@ function EmailVerification(){
           [name]: type === "checkbox" ? checked : value,
         }));
       }
+
+      const handleSubmit = async(event)=>{
+        event.preventDefault()
+        try{
+          const res = await axiosInstance.post(`/login`, Code);
+          console.log(res)
+          
+          setTimeout(() => {
+           
+            navigate('/auth-login',{
+              state: {
+                code: Code
+              }
+            });
+          }, 500);
+        }
+        catch(error){
+          
+          console.log(error)
+        }
+      } 
 
     return  <Wrapper content={<>
       <LeftCover>
