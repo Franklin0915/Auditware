@@ -13,11 +13,12 @@ import { InputContainer } from "./signIn";
 import { LeftCover } from "./signIn";
 import { WelcomeBack } from "./signIn";
 import { LeftMidBlock } from "./signIn";
+import axiosInstance from "../../Service/axios";
 
 
 
 function SignUp() {
-  const [SignUp, setSignUp] = React.useState({ email: "", password: "", firstName: "", lastName: "" });
+  const [SignUp, setSignUp] = React.useState({ email_address: "", password: "", first_name: "", last_name: "" });
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = React.useState(false);
 
@@ -35,7 +36,24 @@ function SignUp() {
   function togglePasswordVisibility() {
     setShowPassword((prevShowPassword) => !prevShowPassword);
   }
-
+  const handleSubmit = async(event)=>{
+    event.preventDefault()
+   
+    try{
+      const res = await axiosInstance.post(`/signup`, SignUp);
+      console.log(res)
+  
+      setTimeout(() => {
+        
+        navigate('/auth-email-verification');
+      }, 500);
+    }
+    catch(error){
+      
+      console.log(error)
+    }
+  }
+   
   return (
     <Wrapper content={<>
     <LeftCover>
@@ -69,7 +87,7 @@ function SignUp() {
                   type="text"
                   placeholder="Enter your first name"
                   name="firstName"
-                  value={SignUp.firstName}
+                  value={SignUp.first_name}
                   onChange={handleChange}
                   id="first-name"
                 />
@@ -80,7 +98,7 @@ function SignUp() {
                   type="text"
                   placeholder="Enter your last name"
                   name="lastName"
-                  value={SignUp.lastName}
+                  value={SignUp.last_name}
                   onChange={handleChange}  
                   id="second-name"        
                 />
@@ -93,7 +111,7 @@ function SignUp() {
                   type="email"
                   placeholder="Enter your email"
                   name="email"
-                  value={SignUp.email}
+                  value={SignUp.email_address}
                   onChange={handleChange}
                   id="input-1"
                 />
