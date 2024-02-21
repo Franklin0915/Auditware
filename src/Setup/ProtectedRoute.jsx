@@ -1,16 +1,17 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import session from '../Store/Session';
 import { useNavigate } from 'react-router-dom';
+import Context from '../Store/Context/Context';
 
 function ProtectedRoute({ children }) {
   const navigate = useNavigate();
-  const isLogin = session.get('isLogin');
+  const {store} = useContext(Context)
 
   useEffect(() => {
-    if (!isLogin) {
+    if (!store.isLogin) {
       navigate('/auth-login');
     }
-  }, [isLogin]); // Include isLogin in the dependency array
+  }, [store.isLogin]); // Include isLogin in the dependency array
 
   return children; // Return children directly
 }

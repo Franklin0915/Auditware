@@ -6,6 +6,9 @@ const Reducer = (state, action) => {
         case actions.login:
             session.set('isLogin', true)
             return {...state, isLogin: true};
+        case actions.logout:
+            session.set('isLogin', false)
+            return {...state, isLogin: false};
         default:
             return state
     }

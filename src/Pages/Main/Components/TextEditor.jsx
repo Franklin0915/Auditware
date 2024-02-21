@@ -5,9 +5,19 @@ import styled from "styled-components";
 
 function TextEditor(){
 
-   const [value, setValue] = React.useState(''); 
+  const [value, setValue] = React.useState(''); 
 
-   const modules = {
+   // Function to handle inserting a link with custom behavior
+  const handleInsertLink = () => {
+    const url = prompt("Enter the URL");
+
+    // Perform custom logic based on the URL (open local file, etc.)
+    if (url) {
+      const link = `<a href="${url}" target="_blank">${url}</a>`;
+      setValue(value + link);
+    }
+  };
+  const modules = {
     toolbar: [
       [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
       ['bold', 'italic', 'underline', 'strike'],
@@ -25,16 +35,7 @@ function TextEditor(){
     'link', 'image',
   ];
 
-  // Function to handle inserting a link with custom behavior
-  const handleInsertLink = () => {
-    const url = prompt("Enter the URL");
-
-    // Perform custom logic based on the URL (open local file, etc.)
-    if (url) {
-      const link = `<a href="${url}" target="_blank">${url}</a>`;
-      setValue(value + link);
-    }
-  };
+  
 
   const handleChange = (content) => {
     setValue(content);

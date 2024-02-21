@@ -5,7 +5,7 @@ import styled from "styled-components";
 import googleImage from './assets/images/google-image.png';
 import appleImage from './assets/images/apple.png';
 import slideImage from './assets/images/slide.png';
-import { useNavigate } from 'react-router-dom'; 
+import { Link, useNavigate } from 'react-router-dom'; 
 import Wrapper from "./Components/Wrapper";
 import { brand } from "../../Assets";
 import { MainInput } from "./signIn";
@@ -13,27 +13,33 @@ import { InputContainer } from "./signIn";
 import { LeftCover } from "./signIn";
 import { WelcomeBack } from "./signIn";
 import { LeftMidBlock } from "./signIn";
+import axiosInstance from "../../Service/axios";
 
 
 
 function SignUp() {
-  const [SignUp, setSignUp] = React.useState({ email: "", password: "", firstName: "", lastName: "" });
+  const [detail, setDetail] = React.useState({ email_address: "", password: "", firstName: "", lastName: "" });
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = React.useState(false);
 
-  function toSignIn() {
-    navigate("/signin");
-  }
+
 
   function handleChange(event) {
     const { name, value, type, checked } = event.target;
-    setSignUp((prevForm) => ({
+    setDetail((prevForm) => ({
       ...prevForm,
       [name]: type === "checkbox" ? checked : value,
     }));
   }
-  function togglePasswordVisibility() {
-    setShowPassword((prevShowPassword) => !prevShowPassword);
+  function submitForm(e){
+    e.preventDefault();
+
+    axiosInstance.post('/signup/', detail)
+    .then(res=>{
+      console.log(res)
+    }).catch(err=>{
+      console.log(err)
+    })
   }
 
   return (
@@ -61,7 +67,7 @@ function SignUp() {
               <hr />
             </div>
           </LeftMidBlock>
-          <form>
+          <form onSubmit={e=>submitForm(e)}>
             <NameField className="name-field">
               <Name className="f-name">
                 <label htmlFor="first-name">First name</label>
@@ -69,7 +75,7 @@ function SignUp() {
                   type="text"
                   placeholder="Enter your first name"
                   name="firstName"
-                  value={SignUp.firstName}
+                  value={detail.firstName}
                   onChange={handleChange}
                   id="first-name"
                 />
@@ -80,7 +86,7 @@ function SignUp() {
                   type="text"
                   placeholder="Enter your last name"
                   name="lastName"
-                  value={SignUp.lastName}
+                  value={detail.lastName}
                   onChange={handleChange}  
                   id="second-name"        
                 />
@@ -91,30 +97,30 @@ function SignUp() {
               <MainInput
                 type="email"
                 placeholder="Enter your email"
-                name="email"
-                value={SignUp.email}
+                name="email_address"
+                value={detail.email_address}
                 onChange={handleChange}
                 id="input-1"
               />
             </InputContainer>
             <InputContainer className="second-input">
-        <label htmlFor="input-2">Create a password</label>
-        <MainInput
-          type={showPassword ? "text" : "password"} 
-          name="password"
-          placeholder="Enter your password"
-          value={SignUp.password}
-          onChange={handleChange}
-          id="input-2"
-        />
-        <i className={`fa-regular ${showPassword ? "fa-eye" : "fa-eye-slash"}`} onClick={togglePasswordVisibility}></i>
-      
-      </InputContainer>
+              <label htmlFor="input-2">Create a password</label>
+              <MainInput
+                type={showPassword ? "text" : "password"} 
+                name="password"
+                placeholder="Enter your password"
+                value={detail.password}
+                onChange={handleChange}
+                id="input-2"
+              />
+              <i className={`fa-regular ${showPassword ? "fa-eye" : "fa-eye-slash"}`} onClick={()=>setShowPassword(!showPassword)}></i>
+            
+            </InputContainer>
             <aside className="login-button">
               <SubmitButton>Sign up</SubmitButton>
             </aside>
-          </form>
-          <div className="sign-in">Already have an account?<a href="#" onClick={toSignIn}>Sign in</a></div>
+      </form>
+          <div className="sign-in">Already have an account?<Link to={'/auth-login'}>Sign in</Link></div>
           <div className="terms">By signing up, you are confirming that you have read and agree with all
             <br/> our <a href="#">Terms and Conditions.</a>
           </div>

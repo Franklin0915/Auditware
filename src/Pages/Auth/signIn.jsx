@@ -1,6 +1,6 @@
 // ./Pages/signIn.js
 
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import styled from "styled-components";
 import './signIn.css';
 import googleImage from './assets/images/google-image.png';
@@ -15,9 +15,12 @@ import axios from 'axios';
 import axiosInstance from "../../Service/axios";
 import useMain from "../../Common/Hooks/useMain";
 import Loading from "../../Common/Components/Loading";
+import Context from "../../Store/Context/Context";
+import actions from "../../Store/Context/Actions";
 
 
 function SignIn() {
+  const {store, setStore} = useContext(Context)
   const {isLoading, setLoading} = useMain()
   const [detail, setDetail] = React.useState({ email_address: "admin@gmail.com", password: "password" });
   const navigate = useNavigate();
@@ -43,6 +46,8 @@ function SignIn() {
       console.log(res)
       session.set('token', res.data?.token)
       session.set('isLogin', 'true')
+      setStore({type: actions.login})
+      
       setTimeout(() => {
         setLoading(false)
         navigate('/dashboard');
@@ -54,13 +59,6 @@ function SignIn() {
     }
   }
 
-  const skipLogin = (e) => {
-    e.preventDefault()
-    session.set('isLogin', true)
-    setTimeout(() => {
-      navigate('/dashboard')
-    }, 500);
-  }
 
   return (
     <Wrapper  content={<>
@@ -123,7 +121,7 @@ function SignIn() {
           <SubmitButton>Log in</SubmitButton>
         </aside>
       </form>
-      <div className="sign-up">Don't have an account?<Link to="">Sign up</Link></div>
+      <div className="sign-up">Don't have an account?<Link to="/auth-register">Sign up</Link></div>
       
 
 

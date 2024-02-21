@@ -26,7 +26,7 @@ function BigCard(){
                                         <img  src={avatar} alt="" className=''/>
                                     </div>
                             }
-                            return <></>
+                            return <React.Fragment key={'mem'+idx}/>
                         })
                     }
             </Columns>
