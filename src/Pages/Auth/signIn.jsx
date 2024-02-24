@@ -74,7 +74,7 @@ if (token && typeof token === 'string') {
 
   return (
     <Wrapper  content={<>
-      {/* <Loading status={isLoading}/> */}
+      <Loading status={isLoading}/>
       <LeftCover>
       <LeftMidBlock className="left-mid-block">
         <WelcomeBack className="m-1">
