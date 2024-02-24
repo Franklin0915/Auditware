@@ -19,7 +19,7 @@ import Loading from "../../Common/Components/Loading";
 
 function SignIn() {
   const {isLoading, setLoading} = useMain()
-  const [detail, setDetail] = React.useState({ email_address: "admin@gmail.com", password: "password" });
+  const [detail, setDetail] = React.useState({ email_address: "", password: "" });
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = React.useState(false);
 
@@ -40,13 +40,23 @@ function SignIn() {
     setLoading(true)
     try{
       const res = await axiosInstance.post(`/login`, detail);
-      console.log(res)
-      session.set('token', res.data?.token)
-      session.set('isLogin', 'true')
-      setTimeout(() => {
-        setLoading(false)
-        navigate('/dashboard');
-      }, 500);
+console.log(res);
+
+const token = res.data?.token;
+
+// Check if the token is present and is a string
+if (token && typeof token === 'string') {
+  session.set('token', token);
+  session.set('isLogin', "true");
+
+  setTimeout(() => {
+    setLoading(false);
+    navigate('/dashboard');
+  }, 500);
+} else {
+  console.error('Invalid token format:', token);
+}
+
     }
     catch(error){
       setLoading(false)
@@ -56,7 +66,7 @@ function SignIn() {
 
   const skipLogin = (e) => {
     e.preventDefault()
-    session.set('isLogin', true)
+    // session.set('isLogin', true)
     setTimeout(() => {
       navigate('/dashboard')
     }, 500);
@@ -64,7 +74,7 @@ function SignIn() {
 
   return (
     <Wrapper  content={<>
-      <Loading status={isLoading}/>
+      {/* <Loading status={isLoading}/> */}
       <LeftCover>
       <LeftMidBlock className="left-mid-block">
         <WelcomeBack className="m-1">
@@ -97,7 +107,7 @@ function SignIn() {
                 <MainInput
                   type="email"
                   placeholder="Enter your email"
-                  name="email"
+                  name="email_address"
                   value={detail.email_address}
                   onChange={handleChange}
                   id="input-1"

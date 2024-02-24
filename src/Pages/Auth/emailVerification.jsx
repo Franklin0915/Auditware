@@ -15,7 +15,7 @@ import axios from "axios";
 import { VerifyUrl } from "../../Setup/Constants";
 
 function EmailVerification() {
-  const [Code, setCode] = React.useState({ verificationCode: "" });
+  const [Code, setCode] = React.useState({ verification_code: "" });
   const navigate = useNavigate();
   
 
@@ -26,7 +26,7 @@ function EmailVerification() {
     const formattedCode =
       cleanedValue.length <= 8
         ? cleanedValue.replace(/(\d{4})(\d{0,4})/, '$1 $2')
-        : Code.verificationCode;
+        : Code.verification_code;
 
     setCode((prevForm) => ({
       ...prevForm,
@@ -39,7 +39,7 @@ function EmailVerification() {
     try {
       const email = sessionStorage.getItem("email");
       console.log(email);
-      const url = `${VerifyUrl}/email`;
+      const url = `${VerifyUrl}/${email}`;
       console.log(url)
       const res = await axios.post(url, Code);
       console.log(res);
@@ -78,8 +78,8 @@ function EmailVerification() {
                   <MainInput
                     type="text"
                     placeholder="xxxx-xxxx"
-                    name="verificationCode"
-                    value={Code.verificationCode}
+                    name="verification_code"
+                    value={Code.verification_code}
                     onChange={handleChange}
                     id="input-1"
                     maxLength={9} // Set maximum length to 9 to accommodate the space

@@ -20,15 +20,18 @@ function BigCard(){
                 <aside>DSR Audit Tax Consultancy</aside> 
                 <aside></aside>
                 {
-                        members.map((mem, idx)=>{
-                            if(idx<3){
-                                return <div key={'mem'+idx} className="profileImg rounded-full overflow-hidden bg-gray-300 shadow">
-                                        <img  src={avatar} alt="" className=''/>
-                                    </div>
-                            }
-                            return <></>
-                        })
-                    }
+  members.map((mem, idx) => {
+    if (idx < 3) {
+      return (
+        <div key={`mem-${idx}`} className="profileImg rounded-full overflow-hidden bg-gray-300 shadow">
+          <img src={avatar} alt="" className='' />
+        </div>
+      );
+    }
+    return <React.Fragment key={`mem-${idx}`} />;
+  })
+}
+
             </Columns>
             <Columns>
                 <aside>January Annual Audit</aside> <Vr></Vr>
