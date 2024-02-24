@@ -4,7 +4,7 @@ import local from '../Store/Local';
 
 const axiosInstance = axios.create({
     baseURL: BaseUrl,
-    timeout: 5000,
+    // timeout: 5000,
 });
 
 axiosInstance.interceptors.request.use(

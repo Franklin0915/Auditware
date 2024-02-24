@@ -14,6 +14,8 @@ import { LeftCover } from "./signIn";
 import { WelcomeBack } from "./signIn";
 import { LeftMidBlock } from "./signIn";
 import axiosInstance from "../../Service/axios";
+import { Link, useHistory } from 'react-router-dom';
+
 
 
 
@@ -41,7 +43,8 @@ function SignUp() {
    
     try{
       const res = await axiosInstance.post(`/signup`, SignUp);
-      console.log(res)
+      console.log(res.data)
+      sessionStorage.setItem("email",SignUp.email_address);
   
       setTimeout(() => {
         
@@ -79,14 +82,14 @@ function SignUp() {
               <hr />
             </div>
           </LeftMidBlock>
-          <form>
+          <form onSubmit={handleSubmit}>
             <NameField className="name-field">
               <Name className="f-name">
                 <label htmlFor="first-name">First name</label>
                 <input
                   type="text"
                   placeholder="Enter your first name"
-                  name="firstName"
+                  name="first_name"
                   value={SignUp.first_name}
                   onChange={handleChange}
                   id="first-name"
@@ -97,7 +100,7 @@ function SignUp() {
                 <input
                   type="text"
                   placeholder="Enter your last name"
-                  name="lastName"
+                  name="last_name"
                   value={SignUp.last_name}
                   onChange={handleChange}  
                   id="second-name"        
@@ -110,7 +113,7 @@ function SignUp() {
                 <MainInput
                   type="email"
                   placeholder="Enter your email"
-                  name="email"
+                  name="email_address"
                   value={SignUp.email_address}
                   onChange={handleChange}
                   id="input-1"
@@ -135,7 +138,7 @@ function SignUp() {
               <SubmitButton>Sign up</SubmitButton>
             </aside>
           </form>
-          <div className="sign-in">Already have an account?<a href="#" onClick={toSignIn}>Sign in</a></div>
+          <div className="sign-in">Already have an account?<Link to="/auth-login">Sign In</Link></div>
           <div className="terms">By signing up, you are confirming that you have read and agree with all
             <br/> our <a href="#">Terms and Conditions.</a>
           </div>
