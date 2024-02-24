@@ -22,7 +22,7 @@ function ProjectListings() {
         <GridContent>
             {
                 projects.map((card, idx)=>{
-                    return <Card onClick={()=>navigate(`/projects/${idx}`)} key={`Card${idx}`}/>
+                    return <Card onClick={()=>navigate(`/projects-text`)} key={`Card${idx}`}/>
                 })
             }
         </GridContent>

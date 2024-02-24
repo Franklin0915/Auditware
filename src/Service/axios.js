@@ -4,7 +4,7 @@ import local from '../Store/Local';
 
 const axiosInstance = axios.create({
     baseURL: BaseUrl,
-    timeout: 5000,
+    // timeout: 5000,
 });
 
 axiosInstance.interceptors.request.use(
@@ -19,6 +19,7 @@ axiosInstance.interceptors.request.use(
     return Promise.reject(error);
   }
 );
+
 
 // Add a response interceptor to handle token refresh
 axiosInstance.interceptors.response.use(
