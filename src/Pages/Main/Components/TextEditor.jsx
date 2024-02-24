@@ -5,7 +5,18 @@ import styled from "styled-components";
 
 function TextEditor(){
 
-   const [value, setValue] = React.useState(''); 
+   const [value, setValue] = React.useState('');
+
+  // Function to handle inserting a link with custom behavior
+  const handleInsertLink = () => {
+    const url = prompt("Enter the URL");
+
+    // Perform custom logic based on the URL (open local file, etc.)
+    if (url) {
+      const link = `<a href="${url}" target="_blank">${url}</a>`;
+      setValue(value + link);
+    }
+  };
 
    const modules = {
     toolbar: [
@@ -24,17 +35,6 @@ function TextEditor(){
     'list', 'bullet',
     'link', 'image',
   ];
-
-  // Function to handle inserting a link with custom behavior
-  const handleInsertLink = () => {
-    const url = prompt("Enter the URL");
-
-    // Perform custom logic based on the URL (open local file, etc.)
-    if (url) {
-      const link = `<a href="${url}" target="_blank">${url}</a>`;
-      setValue(value + link);
-    }
-  };
 
   const handleChange = (content) => {
     setValue(content);
