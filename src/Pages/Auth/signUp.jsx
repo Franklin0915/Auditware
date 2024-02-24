@@ -13,11 +13,14 @@ import { InputContainer } from "./signIn";
 import { LeftCover } from "./signIn";
 import { WelcomeBack } from "./signIn";
 import { LeftMidBlock } from "./signIn";
+import axiosInstance from "../../Service/axios";
+import { Link, useHistory } from 'react-router-dom';
+
 
 
 
 function SignUp() {
-  const [SignUp, setSignUp] = React.useState({ email: "", password: "", firstName: "", lastName: "" });
+  const [SignUp, setSignUp] = React.useState({ email_address: "", password: "", first_name: "", last_name: "" });
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = React.useState(false);
 
@@ -35,7 +38,25 @@ function SignUp() {
   function togglePasswordVisibility() {
     setShowPassword((prevShowPassword) => !prevShowPassword);
   }
-
+  const handleSubmit = async(event)=>{
+    event.preventDefault()
+   
+    try{
+      const res = await axiosInstance.post(`/signup`, SignUp);
+      console.log(res.data)
+      sessionStorage.setItem("email",SignUp.email_address);
+  
+      setTimeout(() => {
+        
+        navigate('/auth-email-verification');
+      }, 500);
+    }
+    catch(error){
+      
+      console.log(error)
+    }
+  }
+   
   return (
     <Wrapper content={<>
     <LeftCover>
@@ -61,15 +82,15 @@ function SignUp() {
               <hr />
             </div>
           </LeftMidBlock>
-          <form>
+          <form onSubmit={handleSubmit}>
             <NameField className="name-field">
               <Name className="f-name">
                 <label htmlFor="first-name">First name</label>
                 <input
                   type="text"
                   placeholder="Enter your first name"
-                  name="firstName"
-                  value={SignUp.firstName}
+                  name="first_name"
+                  value={SignUp.first_name}
                   onChange={handleChange}
                   id="first-name"
                 />
@@ -79,42 +100,45 @@ function SignUp() {
                 <input
                   type="text"
                   placeholder="Enter your last name"
-                  name="lastName"
-                  value={SignUp.lastName}
+                  name="last_name"
+                  value={SignUp.last_name}
                   onChange={handleChange}  
                   id="second-name"        
                 />
               </Name>
             </NameField>
-            <InputContainer className="first-input">
-              <label htmlFor="input-1">Email</label>
-              <MainInput
-                type="email"
-                placeholder="Enter your email"
-                name="email"
-                value={SignUp.email}
-                onChange={handleChange}
-                id="input-1"
-              />
-            </InputContainer>
-            <InputContainer className="second-input">
-        <label htmlFor="input-2">Create a password</label>
-        <MainInput
-          type={showPassword ? "text" : "password"} 
-          name="password"
-          placeholder="Enter your password"
-          value={SignUp.password}
-          onChange={handleChange}
-          id="input-2"
-        />
-        <i className={`fa-regular ${showPassword ? "fa-eye" : "fa-eye-slash"}`} onClick={togglePasswordVisibility}></i>
-      
-      </InputContainer>
+            <InputContainer >
+              <div>
+                <label htmlFor="input-1">Email</label>
+                <MainInput
+                  type="email"
+                  placeholder="Enter your email"
+                  name="email_address"
+                  value={SignUp.email_address}
+                  onChange={handleChange}
+                  id="input-1"
+                />
+              </div>
+          </InputContainer>
+          <InputContainer className="second-input">
+          <div className="inputLabel">
+            <label htmlFor="input-2">Password</label>
+            <MainInput
+              type={showPassword ? "text" : "password"} 
+              name="password"
+              placeholder="Enter your password"
+              value={SignUp.password}
+              onChange={handleChange}
+              id="input-2"
+            />
+          </div>
+          <i className={`fa-regular eye ${showPassword ? "fa-eye" : "fa-eye-slash"}`} onClick={togglePasswordVisibility}></i>
+        </InputContainer>
             <aside className="login-button">
               <SubmitButton>Sign up</SubmitButton>
             </aside>
           </form>
-          <div className="sign-in">Already have an account?<a href="#" onClick={toSignIn}>Sign in</a></div>
+          <div className="sign-in">Already have an account?<Link to="/auth-login">Sign In</Link></div>
           <div className="terms">By signing up, you are confirming that you have read and agree with all
             <br/> our <a href="#">Terms and Conditions.</a>
           </div>
@@ -133,6 +157,8 @@ flex-direction: column;
 
 label{
   display: flex;
+  justify-content:flex-start;
+  
 }
 
 input{

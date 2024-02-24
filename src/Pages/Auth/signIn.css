@@ -149,6 +149,11 @@ body{
     display: flex;
     
   } */
+  .forgot-password{
+    display: flex;
+    justify-content: flex-end;
+    margin-left: auto;
+  }
   .forgot-password>a{
     display: flex;
     justify-content: flex-end;
