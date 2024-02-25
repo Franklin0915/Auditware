@@ -6,7 +6,7 @@ import './signIn.css';
 import googleImage from './assets/images/google-image.png';
 import apple from './assets/images/apple.png'
 import slideImage from './assets/images/slide.png';
-import { useNavigate } from 'react-router-dom'; 
+import { useLocation, useNavigate } from 'react-router-dom'; 
 import Wrapper from "./Components/Wrapper";
 import { brand } from "../../Assets";
 import session from "../../Store/Session";
@@ -23,6 +23,7 @@ function SignIn() {
   const {store, setStore} = useContext(Context)
   const {isLoading, setLoading} = useMain()
   const [detail, setDetail] = React.useState({ email_address: "admin@gmail.com", password: "password" });
+  const location = useLocation()
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = React.useState(false);
 
@@ -50,7 +51,12 @@ function SignIn() {
       
       setTimeout(() => {
         setLoading(false)
-        navigate('/dashboard');
+        if(location.state?.prev){
+          navigate(location.state.prev)
+        }else{
+          navigate('/dashboard');
+        }
+        
       }, 500);
     }
     catch(error){
