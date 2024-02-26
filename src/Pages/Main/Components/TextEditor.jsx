@@ -42,7 +42,13 @@ function TextEditor() {
     };
   }, []);
 
-  const handleChange = (content) => {
+
+  function extractContent(htmlString) {
+    const match = htmlString.match(/<p>(.*?)<\/p>/);
+    return match ? match[1] : null;
+}
+
+const handleChange = (content) => {
     setValue(content);
     console.log(content);
   };

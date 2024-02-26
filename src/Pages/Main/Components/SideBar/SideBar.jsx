@@ -1,10 +1,19 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
 import { avatar, brand } from '../../../../Assets'
 import {home} from '../../../../Assets/Icons/index'
 import NavItem from './NavItem'
+import session from '../../../../Store/Session'
+import Context from '../../../../Store/Context/Context'
+import actions from '../../../../Store/Context/Actions'
 
 function SideBar({onlyIcons}) {
+  const {setStore} = useContext(Context)
+  const Logout = () => {
+    if(window.confirm('Are you sure you want to logout? ')){
+      setStore({type: actions.logout})
+    }
+  }
 
   return (
     <Container style={{minWidth: onlyIcons?'fit-content':'200px'}} className='flex v-flex a-i-c j-c-b'>
@@ -20,7 +29,7 @@ function SideBar({onlyIcons}) {
           }
         </div>
 
-        <NavItem onlyIcon={onlyIcons} link={'/'} content={<>
+        <NavItem onlyIcon={onlyIcons} link={'/dashboard'} content={<>
           <img src={home} alt="" />
           {
             !onlyIcons && 
@@ -107,18 +116,27 @@ function SideBar({onlyIcons}) {
         </>}/>
       </section>
 
-      <section className='flex j-c-c w-100' style={{width: '100%'}}>
-          <div className="profileImg rounded-full overflow-hidden bg-gray-300 shadow">
-              <img src={avatar} alt="" className=''/>
-          </div>
-          {
-            !onlyIcons && 
-            <div className="profileContent flex v-flex">
-              <b><small>Joshua Odame</small></b>
-              <small className='role'>Admistrator</small>
+      <aside className="flex v-flex">
+        <section className='flex j-c-c w-100' style={{width: '100%', marginBottom: '0.8rem'}}>
+            <div className="profileImg rounded-full overflow-hidden bg-gray-300 shadow">
+                <img src={avatar} alt="" className=''/>
             </div>
-          }
-      </section>
+            {
+              !onlyIcons && 
+              <div className="profileContent flex v-flex">
+                <b><small>Joshua Odame</small></b>
+                <small className='role'>Admistrator</small>
+              </div>
+            }
+        </section>
+        
+        <div onClick={()=>Logout()} className="flex" style={{width: '100%', color: 'red', background: 'rgb(239,68,68, .2)', padding: '0.5rem', borderRadius: '10px', cursor: 'pointer'}}>
+            <svg style={{width: 20, marginRight: '0.3rem'}} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" >
+              <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25 2.25 0 0 1 16.5 21h-6a2.25 2.25 0 0 1-2.25-2.25V15m-3 0-3-3m0 0 3-3m-3 3H15" />
+            </svg>
+            <small>Logout</small>
+        </div>
+      </aside>
         
     </Container>
   )

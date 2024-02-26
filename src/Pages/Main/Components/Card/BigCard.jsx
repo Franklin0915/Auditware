@@ -20,17 +20,17 @@ function BigCard(){
                 <aside>DSR Audit Tax Consultancy</aside> 
                 <aside></aside>
                 {
-  members.map((mem, idx) => {
-    if (idx < 3) {
-      return (
-        <div key={`mem-${idx}`} className="profileImg rounded-full overflow-hidden bg-gray-300 shadow">
-          <img src={avatar} alt="" className='' />
-        </div>
-      );
-    }
-    return <React.Fragment key={`mem-${idx}`} />;
-  })
-}
+                    members.map((mem, idx) => {
+                        if (idx < 3) {
+                        return (
+                            <div key={`mem-${idx}`} className="profileImg rounded-full overflow-hidden bg-gray-300 shadow">
+                            <img src={avatar} alt="" className='' />
+                            </div>
+                        );
+                        }
+                        return <React.Fragment key={`mem-${idx}`} />;
+                    })
+                }
 
             </Columns>
             <Columns>
@@ -40,11 +40,11 @@ function BigCard(){
                 {
                         members.map((mem, idx)=>{
                             if(idx<2){
-                                return <div key={'mem'+idx} className="profileImg rounded-full overflow-hidden bg-gray-300 shadow">
+                                return <div key={'mem-2-'+idx} className="profileImg rounded-full overflow-hidden bg-gray-300 shadow">
                                         <img  src={avatar} alt="" className=''/>
                                     </div>
                             }
-                            return <></>
+                            return <React.Fragment key={`mem-2-${idx}`} />;
                         })
                     }
             </Columns>
@@ -56,11 +56,11 @@ function BigCard(){
                 {
                         members.map((mem, idx)=>{
                             if(idx<3){
-                                return <div key={'mem'+idx} className="profileImg rounded-full overflow-hidden bg-gray-300 shadow">
+                                return <div key={'mem-3-'+idx} className="profileImg rounded-full overflow-hidden bg-gray-300 shadow">
                                         <img  src={avatar} alt="" className=''/>
                                     </div>
                             }
-                            return <></>
+                            return <React.Fragment key={`mem-3-${idx}`} />;
                         })
                     }
             </Columns>
@@ -71,11 +71,11 @@ function BigCard(){
                 {
                         members.map((mem, idx)=>{
                             if(idx<3){
-                                return <div key={'mem'+idx} className="profileImg rounded-full overflow-hidden bg-gray-300 shadow">
+                                return <div key={'mem-4-'+idx} className="profileImg rounded-full overflow-hidden bg-gray-300 shadow">
                                         <img  src={avatar} alt="" className=''/>
                                     </div>
                             }
-                            return <></>
+                            return <React.Fragment key={`mem-4-${idx}`} />;
                         })
                     }
             </Columns>

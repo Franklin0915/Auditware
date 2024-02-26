@@ -5,7 +5,7 @@ import styled from "styled-components";
 import googleImage from './assets/images/google-image.png';
 import appleImage from './assets/images/apple.png';
 import slideImage from './assets/images/slide.png';
-import { useNavigate } from 'react-router-dom'; 
+import { Link, useNavigate } from 'react-router-dom'; 
 import Wrapper from "./Components/Wrapper";
 import { brand } from "../../Assets";
 import { MainInput } from "./signIn";
@@ -14,29 +14,33 @@ import { LeftCover } from "./signIn";
 import { WelcomeBack } from "./signIn";
 import { LeftMidBlock } from "./signIn";
 import axiosInstance from "../../Service/axios";
-import { Link, useHistory } from 'react-router-dom';
 
 
 
 
 function SignUp() {
-  const [SignUp, setSignUp] = React.useState({ email_address: "", password: "", first_name: "", last_name: "" });
+  const [detail, setDetail] = React.useState({ email_address: "", password: "", first_name: "", last_name: "" });
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = React.useState(false);
 
-  function toSignIn() {
-    navigate("/signin");
-  }
+
 
   function handleChange(event) {
     const { name, value, type, checked } = event.target;
-    setSignUp((prevForm) => ({
+    setDetail((prevForm) => ({
       ...prevForm,
       [name]: type === "checkbox" ? checked : value,
     }));
   }
-  function togglePasswordVisibility() {
-    setShowPassword((prevShowPassword) => !prevShowPassword);
+  function submitForm(e){
+    e.preventDefault();
+
+    axiosInstance.post('/signup/', detail)
+    .then(res=>{
+      console.log(res)
+    }).catch(err=>{
+      console.log(err)
+    })
   }
   const handleSubmit = async(event)=>{
     event.preventDefault()
@@ -132,7 +136,7 @@ function SignUp() {
               id="input-2"
             />
           </div>
-          <i className={`fa-regular eye ${showPassword ? "fa-eye" : "fa-eye-slash"}`} onClick={togglePasswordVisibility}></i>
+          <i className={`fa-regular eye ${showPassword ? "fa-eye" : "fa-eye-slash"}`} onClick={()=>setShowPassword(!showPassword)}></i>
         </InputContainer>
             <aside className="login-button">
               <SubmitButton>Sign up</SubmitButton>
