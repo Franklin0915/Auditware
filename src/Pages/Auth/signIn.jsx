@@ -133,7 +133,7 @@ if (token && typeof token === 'string') {
           <SubmitButton>Log in</SubmitButton>
         </aside>
       </form>
-      <div className="sign-up">Don't have an account?<Link to="">Sign up</Link></div>
+      <div className="sign-up">Don't have an account?<Link to="/auth-register">Sign up</Link></div>
       
 
 
