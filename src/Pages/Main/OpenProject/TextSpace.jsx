@@ -6,6 +6,7 @@ import { avatar } from '../../../Assets'
 import { Data_SectionOne } from './data'
 import useMain from '../../../Common/Hooks/useMain'
 import FileCard from '../Files/Includes/FileCard'
+import Tiptap from '../Components/Editor2'
 
 function TextSpace() {
     const {dropName, dropStatus, setDrop, offDrop} = useMain()
@@ -15,7 +16,7 @@ function TextSpace() {
 
     return (
         <Container className='flex a-i-s'>
-            <SectionOne style={{minWidth: '300px',width: '300px', height: '100%'}}>
+            <SectionOne className='' style={{minWidth: '300px',width: '300px', height: '100%'}}>
                 <div className="w-100 flex contributors">
                     {
                         avatarData.map((val, idx)=><div key={idx} className='avatar mr-1'>
@@ -23,7 +24,7 @@ function TextSpace() {
                         </div>)
                     }
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M11 5H9V9H5V11H9V15H11V11H15V9H11V5ZM10 0C4.48 0 0 4.48 0 10C0 15.52 4.48 20 10 20C15.52 20 20 15.52 20 10C20 4.48 15.52 0 10 0ZM10 18C5.59 18 2 14.41 2 10C2 5.59 5.59 2 10 2C14.41 2 18 5.59 18 10C18 14.41 14.41 18 10 18Z" fill="black" fill-opacity="0.5"/>
+                    <path d="M11 5H9V9H5V11H9V15H11V11H15V9H11V5ZM10 0C4.48 0 0 4.48 0 10C0 15.52 4.48 20 10 20C15.52 20 20 15.52 20 10C20 4.48 15.52 0 10 0ZM10 18C5.59 18 2 14.41 2 10C2 5.59 5.59 2 10 2C14.41 2 18 5.59 18 10C18 14.41 14.41 18 10 18Z" fill="black" fillOpacity="0.5"/>
                     </svg>
                 </div>
                 <br />
@@ -67,10 +68,10 @@ function TextSpace() {
                     <TextEditor/>
                 </section>
             </section>
-            <SectionTwo style={{minWidth: '320px', width: '320px', height: '100%',}}>
+            <SectionTwo className='' style={{minWidth: '320px', width: '320px', height: '100%',}}>
                 <div className="profile w-100 flex j-c-end">
                     <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12.5 11H11.71L11.43 10.73C12.41 9.59 13 8.11 13 6.5C13 2.91 10.09 0 6.5 0C2.91 0 0 2.91 0 6.5C0 10.09 2.91 13 6.5 13C8.11 13 9.59 12.41 10.73 11.43L11 11.71V12.5L16 17.49L17.49 16L12.5 11ZM6.5 11C4.01 11 2 8.99 2 6.5C2 4.01 4.01 2 6.5 2C8.99 2 11 4.01 11 6.5C11 8.99 8.99 11 6.5 11Z" fill="black" fill-opacity="0.5"/>
+                    <path d="M12.5 11H11.71L11.43 10.73C12.41 9.59 13 8.11 13 6.5C13 2.91 10.09 0 6.5 0C2.91 0 0 2.91 0 6.5C0 10.09 2.91 13 6.5 13C8.11 13 9.59 12.41 10.73 11.43L11 11.71V12.5L16 17.49L17.49 16L12.5 11ZM6.5 11C4.01 11 2 8.99 2 6.5C2 4.01 4.01 2 6.5 2C8.99 2 11 4.01 11 6.5C11 8.99 8.99 11 6.5 11Z" fill="black" fillOpacity="0.5"/>
                     </svg>
                     <div className="relative ml-1">
                         <div className="noti absolute"></div>
@@ -95,7 +96,7 @@ function TextSpace() {
                             <img src={avatar} alt="" className='' style={{objectFit: 'contain', width: '100%', height: '100%',margin: 'auto'}}/>
                             <div className='flex j-c-c absolute' style={{background: 'rgb(0,0,0,.5)', top: 0, bottom: 0, left: 0, right: 0}}>
                                 <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="20" cy="20" r="20" fill="white" fill-opacity="0.5"/>
+                                <circle cx="20" cy="20" r="20" fill="white" fillOpacity="0.5"/>
                                 <path d="M29 18.2679C30.3333 19.0377 30.3333 20.9623 29 21.7321L17 28.6603C15.6667 29.4301 14 28.4678 14 26.9282V13.0718C14 11.5322 15.6667 10.5699 17 11.3397L29 18.2679Z" fill="white"/>
                                 </svg>
                             </div>

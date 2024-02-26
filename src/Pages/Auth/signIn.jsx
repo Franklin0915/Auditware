@@ -1,12 +1,12 @@
 // ./Pages/signIn.js
 
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import styled from "styled-components";
 import './signIn.css';
 import googleImage from './assets/images/google-image.png';
 import apple from './assets/images/apple.png'
 import slideImage from './assets/images/slide.png';
-import { useNavigate } from 'react-router-dom'; 
+import { useLocation, useNavigate } from 'react-router-dom'; 
 import Wrapper from "./Components/Wrapper";
 import { brand } from "../../Assets";
 import session from "../../Store/Session";
@@ -15,11 +15,15 @@ import axios from 'axios';
 import axiosInstance from "../../Service/axios";
 import useMain from "../../Common/Hooks/useMain";
 import Loading from "../../Common/Components/Loading";
+import Context from "../../Store/Context/Context";
+import actions from "../../Store/Context/Actions";
 
 
 function SignIn() {
+  const {store, setStore} = useContext(Context)
   const {isLoading, setLoading} = useMain()
   const [detail, setDetail] = React.useState({ email_address: "", password: "" });
+  const location = useLocation()
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = React.useState(false);
 
@@ -40,23 +44,19 @@ function SignIn() {
     setLoading(true)
     try{
       const res = await axiosInstance.post(`/login`, detail);
-console.log(res);
-
-const token = res.data?.token;
-
-// Check if the token is present and is a string
-if (token && typeof token === 'string') {
-  session.set('token', token);
-  session.set('isLogin', "true");
-
-  setTimeout(() => {
-    setLoading(false);
-    navigate('/dashboard');
-  }, 500);
-} else {
-  console.error('Invalid token format:', token);
-}
-
+      console.log(res)
+      setStore({type: actions.login})
+      setStore({type: actions.token, value: res.data?.token})
+      
+      setTimeout(() => {
+        setLoading(false)
+        if(location.state?.prev){
+          navigate(location.state.prev)
+        }else{
+          navigate('/dashboard');
+        }
+        
+      }, 500);
     }
     catch(error){
       setLoading(false)
@@ -64,17 +64,10 @@ if (token && typeof token === 'string') {
     }
   }
 
-  const skipLogin = (e) => {
-    e.preventDefault()
-    // session.set('isLogin', true)
-    setTimeout(() => {
-      navigate('/dashboard')
-    }, 500);
-  }
 
   return (
     <Wrapper  content={<>
-      {/* <Loading status={isLoading}/> */}
+      <Loading status={isLoading}/>
       <LeftCover>
       <LeftMidBlock className="left-mid-block">
         <WelcomeBack className="m-1">
@@ -133,7 +126,7 @@ if (token && typeof token === 'string') {
           <SubmitButton>Log in</SubmitButton>
         </aside>
       </form>
-      <div className="sign-up">Don't have an account?<Link to="">Sign up</Link></div>
+      <div className="sign-up">Don't have an account?<Link to="/auth-register">Sign up</Link></div>
       
 
 

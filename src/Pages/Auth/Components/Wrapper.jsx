@@ -19,17 +19,16 @@ const Container = styled.div`
   width: 100vw;
   height: 100vh;
   padding: 1rem;
- 
- 
-
-
-  `
+  overflow: hidden;
+  scrollbar
+`
 
 const Content = styled.div`
   width: 100%;
   height: 100%;
   position: relative;
   padding-top: 3rem;
+  overflow-y: auto;
 `
 
 export default Wrapper

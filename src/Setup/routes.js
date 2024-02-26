@@ -35,12 +35,14 @@ function Routers() {
             
 
             {/* Auth Routes Here ................... */}
-            <Route path='/auth-forget-password' element={<ForgetPassword/>}></Route>
-            <Route path='/auth-email-verification' element={<EmailVerification/>}></Route>
+            <Route path='/auth-forget-password' element={<ForgetPassword/>}/>
+            <Route path='/auth-email-verification' element={<EmailVerification/>}/>
             <Route path='/auth-login' element={<SignIn />} />
             <Route path='/auth-register' element={<SignUp/>} />
-            <Route path='/auth-reset-password' element={<ResetPassword/>}></Route>
-            <Route path='/auth-payment' element={<Payment/>}></Route>
+            <Route path='/auth-reset-password' element={<ResetPassword/>}/>
+            <Route path='/auth-payment' element={<Payment/>}/>
+
+            <Route path='*' element={<Private><Dashboard/></Private>}/>
         </Routes>
     </div>
   )

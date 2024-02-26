@@ -7,7 +7,8 @@ function NavItem({content, name, link, onlyIcon}) {
   const location = useLocation()
   
   return (
-    <Container className='flex' style={{...location.pathname === link ? {...active} : {...inactive}, width: `${onlyIcon?'fit-content':'90%'}`}}>
+    <Container className='flex' style={{...(location.pathname === link || location.pathname.includes(link?.slice(0,5))) ? {...active} : {...inactive}, width: `${onlyIcon?'fit-content':'90%'}`}}>
+      
       <Link to={link} className='flex link'>
         {content}
       </Link>

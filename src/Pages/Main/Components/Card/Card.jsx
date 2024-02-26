@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import styled from 'styled-components'
 import { avatar } from '../../../../Assets'
 import { colors } from '../../../../Setup/colors'
 
-function Card({onClick}) {
+function Card({onClick, card}) {
     const members = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
   return (
     <Container onClick={()=>onClick()}>
@@ -25,7 +25,7 @@ function Card({onClick}) {
                                         <img src={avatar} alt="" className=''/>
                                     </div>
                             }
-                            return <></>
+                            return <Fragment key={mem+idx}/>
                         })
                     }
                     {

@@ -16,7 +16,7 @@ import axiosInstance from "../../Service/axios";
 
 function ForgetPassword(){
 
-    const[email,setEmail]=React.useState({email_address:"oppongnkrumahdavid@yahoo.com"})
+    const[email,setEmail]=React.useState({email_address:""})
     const navigate = useNavigate();
 
     function handleChange(event) {
