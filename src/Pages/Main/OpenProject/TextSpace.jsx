@@ -16,7 +16,7 @@ function TextSpace() {
 
     return (
         <Container className='flex a-i-s'>
-            <SectionOne className='hidden' style={{minWidth: '300px',width: '300px', height: '100%'}}>
+            <SectionOne className='' style={{minWidth: '300px',width: '300px', height: '100%'}}>
                 <div className="w-100 flex contributors">
                     {
                         avatarData.map((val, idx)=><div key={idx} className='avatar mr-1'>
@@ -53,7 +53,7 @@ function TextSpace() {
                 </div>
             </SectionOne>
             <section style={{width: '100%', height: '100%', padding: '0 1.5rem', overflow: 'hidden', overflowY: 'auto'}} className=''>
-                <section className="hidden v-flex a-i-s j-c-s" style={{minHeight: '100px',position: 'sticky', top: 0, background: 'white', zIndex: '10', paddingTop: '1.5rem'}}>
+                <section className="flex v-flex a-i-s j-c-s" style={{minHeight: '100px',position: 'sticky', top: 0, background: 'white', zIndex: '10', paddingTop: '1.5rem'}}>
                     <div className="w-100 flex j-c-b mb-1">
                         <b>2024 First Quarter Financial Audit</b>
                         <b>In progress - 80%</b>
@@ -65,10 +65,10 @@ function TextSpace() {
                     </section>
                 </section>
                 <section style={{height: 'calc(100%-111px)', overflow: 'hidden', overflowY: 'auto', background: 'white', zIndex: 0}}>
-                    <Tiptap/>
+                    <TextEditor/>
                 </section>
             </section>
-            <SectionTwo className='hidden' style={{minWidth: '320px', width: '320px', height: '100%',}}>
+            <SectionTwo className='' style={{minWidth: '320px', width: '320px', height: '100%',}}>
                 <div className="profile w-100 flex j-c-end">
                     <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M12.5 11H11.71L11.43 10.73C12.41 9.59 13 8.11 13 6.5C13 2.91 10.09 0 6.5 0C2.91 0 0 2.91 0 6.5C0 10.09 2.91 13 6.5 13C8.11 13 9.59 12.41 10.73 11.43L11 11.71V12.5L16 17.49L17.49 16L12.5 11ZM6.5 11C4.01 11 2 8.99 2 6.5C2 4.01 4.01 2 6.5 2C8.99 2 11 4.01 11 6.5C11 8.99 8.99 11 6.5 11Z" fill="black" fillOpacity="0.5"/>

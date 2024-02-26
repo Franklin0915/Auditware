@@ -48,7 +48,10 @@ function TextEditor() {
     return match ? match[1] : null;
 }
 
-
+const handleChange = (content) => {
+    setValue(content);
+    console.log(content);
+  };
 
   return (
     <EditorContainer>
