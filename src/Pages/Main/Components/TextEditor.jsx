@@ -1,40 +1,46 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import ReactQuill from "react-quill";
-import 'react-quill/dist/quill.snow.css';
+import "react-quill/dist/quill.snow.css";
 import styled from "styled-components";
 
-function TextEditor(){
+function TextEditor() {
+  const [value, setValue] = useState("");
+  const quillRef = useRef(null);
 
-   const [value, setValue] = React.useState('');
-
-  // Function to handle inserting a link with custom behavior
   const handleInsertLink = () => {
     const url = prompt("Enter the URL");
 
-    // Perform custom logic based on the URL (open local file, etc.)
     if (url) {
       const link = `<a href="${url}" target="_blank">${url}</a>`;
-      setValue(value + link);
+      const range = quillRef.current.getEditor().getSelection();
+      quillRef.current.getEditor().clipboard.dangerouslyPasteHTML(
+        range.index,
+        link,
+        "api"
+      );
     }
   };
 
-   const modules = {
-    toolbar: [
-      [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
-      ['bold', 'italic', 'underline', 'strike'],
-      [{ 'list': 'ordered' }, { 'list': 'bullet' }],
-      ['link', 'image'],
-      ['clean'],
-      [{ 'customLink': handleInsertLink }],
-    ],
-  };
+  useEffect(() => {
+    let isMounted = true;
 
-  const formats = [
-    'header',
-    'bold', 'italic', 'underline', 'strike',
-    'list', 'bullet',
-    'link', 'image',
-  ];
+    if (isMounted) {
+      // Access the Quill instance through the ref
+      const quill = quillRef.current.getEditor();
+
+      // Modify modules or formats if needed
+      quill.updateContents([
+        { insert: "\n" }, // Insert a new line to separate the existing content
+      ]);
+
+      // Insert the toolbar options
+      quill.formatLine(1, 1, { customLink: handleInsertLink });
+    }
+
+    return () => {
+      isMounted = false;
+    };
+  }, []);
 
   const handleChange = (content) => {
     setValue(content);
@@ -44,10 +50,10 @@ function TextEditor(){
   return (
     <EditorContainer>
       <ReactQuill
-        style={{ border: 'none', height: '100%' }}
+        ref={quillRef}
+        className="react-quill"
+        style={{ border: "none", height: "100%" }}
         value={value}
-        modules={modules}
-        formats={formats}
         onChange={handleChange}
         placeholder="Type here.."
       />
