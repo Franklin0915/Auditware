@@ -25,7 +25,7 @@ function Routers() {
             <Route path='/' element={<Private><Dashboard/></Private>}/>
             <Route path='/dashboard' element={<Private><Dashboard/></Private>}/>
             <Route path='/projects' element={<Private><Projects/></Private>}/>
-            <Route path='/projects/:id' element={<Private><OpenProject/></Private>}/>
+            <Route path='/projects-text' element={<Private><OpenProject/></Private>}/>
             <Route path='/recents' element={<Private><Recents/></Private>}/>
             <Route path='/members' element={<Private><Members/></Private>}/>
             <Route path='/workspaces' element={<Private><Workspaces/></Private>}/>
@@ -35,12 +35,14 @@ function Routers() {
             
 
             {/* Auth Routes Here ................... */}
-            <Route path='/auth-forget-password' element={<ForgetPassword/>}></Route>
-            <Route path='/auth-email-verification' element={<EmailVerification/>}></Route>
+            <Route path='/auth-forget-password' element={<ForgetPassword/>}/>
+            <Route path='/auth-email-verification' element={<EmailVerification/>}/>
             <Route path='/auth-login' element={<SignIn />} />
             <Route path='/auth-register' element={<SignUp/>} />
-            <Route path='/auth-reset-password' element={<ResetPassword/>}></Route>
-            <Route path='/auth-payment' element={<Payment/>}></Route>
+            <Route path='/auth-reset-password' element={<ResetPassword/>}/>
+            <Route path='/auth-payment' element={<Payment/>}/>
+
+            <Route path='*' element={<Private><Dashboard/></Private>}/>
         </Routes>
     </div>
   )

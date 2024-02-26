@@ -1,6 +1,7 @@
 const actions = {
     login: 'login',
-    logout: 'logout'
+    logout: 'logout',
+    token: 'token'
 }
 
 export default actions

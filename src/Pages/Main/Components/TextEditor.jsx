@@ -5,9 +5,9 @@ import styled from "styled-components";
 
 function TextEditor(){
 
-  const [value, setValue] = React.useState(''); 
+   const [value, setValue] = React.useState('');
 
-   // Function to handle inserting a link with custom behavior
+  // Function to handle inserting a link with custom behavior
   const handleInsertLink = () => {
     const url = prompt("Enter the URL");
 
@@ -17,6 +17,7 @@ function TextEditor(){
       setValue(value + link);
     }
   };
+
   const modules = {
     toolbar: [
       [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
@@ -35,12 +36,11 @@ function TextEditor(){
     'link', 'image',
   ];
 
-  
 
-  const handleChange = (content) => {
-    setValue(content);
-    console.log(content);
-  };
+  function extractContent(htmlString) {
+    const match = htmlString.match(/<p>(.*?)<\/p>/);
+    return match ? match[1] : null;
+}
 
   return (
     <EditorContainer>
@@ -49,7 +49,7 @@ function TextEditor(){
         value={value}
         modules={modules}
         formats={formats}
-        onChange={handleChange}
+        onChange={e=>setValue(extractContent(e))}
         placeholder="Type here.."
       />
     </EditorContainer>

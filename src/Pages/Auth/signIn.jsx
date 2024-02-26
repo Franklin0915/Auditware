@@ -22,7 +22,7 @@ import actions from "../../Store/Context/Actions";
 function SignIn() {
   const {store, setStore} = useContext(Context)
   const {isLoading, setLoading} = useMain()
-  const [detail, setDetail] = React.useState({ email_address: "admin@gmail.com", password: "password" });
+  const [detail, setDetail] = React.useState({ email_address: "", password: "" });
   const location = useLocation()
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = React.useState(false);
@@ -45,9 +45,8 @@ function SignIn() {
     try{
       const res = await axiosInstance.post(`/login`, detail);
       console.log(res)
-      session.set('token', res.data?.token)
-      session.set('isLogin', 'true')
       setStore({type: actions.login})
+      setStore({type: actions.token, value: res.data?.token})
       
       setTimeout(() => {
         setLoading(false)
@@ -101,7 +100,7 @@ function SignIn() {
                 <MainInput
                   type="email"
                   placeholder="Enter your email"
-                  name="email"
+                  name="email_address"
                   value={detail.email_address}
                   onChange={handleChange}
                   id="input-1"

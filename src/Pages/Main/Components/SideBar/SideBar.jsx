@@ -29,7 +29,7 @@ function SideBar({onlyIcons}) {
           }
         </div>
 
-        <NavItem onlyIcon={onlyIcons} link={'/'} content={<>
+        <NavItem onlyIcon={onlyIcons} link={'/dashboard'} content={<>
           <img src={home} alt="" />
           {
             !onlyIcons && 

@@ -17,8 +17,9 @@ import axiosInstance from "../../Service/axios";
 
 
 
+
 function SignUp() {
-  const [detail, setDetail] = React.useState({ email_address: "", password: "", firstName: "", lastName: "" });
+  const [detail, setDetail] = React.useState({ email_address: "", password: "", first_name: "", last_name: "" });
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = React.useState(false);
 
@@ -41,7 +42,25 @@ function SignUp() {
       console.log(err)
     })
   }
-
+  const handleSubmit = async(event)=>{
+    event.preventDefault()
+   
+    try{
+      const res = await axiosInstance.post(`/signup`, SignUp);
+      console.log(res.data)
+      sessionStorage.setItem("email",SignUp.email_address);
+  
+      setTimeout(() => {
+        
+        navigate('/auth-email-verification');
+      }, 500);
+    }
+    catch(error){
+      
+      console.log(error)
+    }
+  }
+   
   return (
     <Wrapper content={<>
     <LeftCover>
@@ -67,15 +86,15 @@ function SignUp() {
               <hr />
             </div>
           </LeftMidBlock>
-          <form onSubmit={e=>submitForm(e)}>
+          <form onSubmit={handleSubmit}>
             <NameField className="name-field">
               <Name className="f-name">
                 <label htmlFor="first-name">First name</label>
                 <input
                   type="text"
                   placeholder="Enter your first name"
-                  name="firstName"
-                  value={detail.firstName}
+                  name="first_name"
+                  value={SignUp.first_name}
                   onChange={handleChange}
                   id="first-name"
                 />
@@ -85,8 +104,8 @@ function SignUp() {
                 <input
                   type="text"
                   placeholder="Enter your last name"
-                  name="lastName"
-                  value={detail.lastName}
+                  name="last_name"
+                  value={SignUp.last_name}
                   onChange={handleChange}  
                   id="second-name"        
                 />
@@ -98,8 +117,8 @@ function SignUp() {
                 <MainInput
                   type="email"
                   placeholder="Enter your email"
-                  name="email"
-                  value={SignUp.email}
+                  name="email_address"
+                  value={SignUp.email_address}
                   onChange={handleChange}
                   id="input-1"
                 />
@@ -122,8 +141,8 @@ function SignUp() {
             <aside className="login-button">
               <SubmitButton>Sign up</SubmitButton>
             </aside>
-      </form>
-          <div className="sign-in">Already have an account?<Link to={'/auth-login'}>Sign in</Link></div>
+          </form>
+          <div className="sign-in">Already have an account?<Link to="/auth-login">Sign In</Link></div>
           <div className="terms">By signing up, you are confirming that you have read and agree with all
             <br/> our <a href="#">Terms and Conditions.</a>
           </div>

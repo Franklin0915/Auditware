@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { colors } from "../../../Setup/colors";
 import styled from 'styled-components'
 import Wrapper from "../Components/Wrapper";
@@ -11,15 +11,18 @@ import SmoothAreaChartComponent from "../Components/Charts/AreaChart";
 import DoughnutChartComponent from "../Components/Charts/Doughnut";
 import { Pointer } from "../Components/Card/BigCard";
 import Forward from '../../Auth/assets/images/Forward.svg'
+import Context from "../../../Store/Context/Context";
 
 
 
 
 
 const Dashboard = () => {
+
     return (
       <Wrapper page={'Dashboard'} content={<>
         <MainContainer style={{color: colors.main}}>
+
           <TopPart>
             <BigCard />
             <SmallCard/>
